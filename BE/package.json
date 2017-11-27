@@ -1,0 +1,27 @@
+{
+  "name": "API",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "PGS",
+  "dependencies": {
+    "async": "^2.6.0",
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "express": "~4.15.5",
+    "express-session": "^1.15.6",
+    "faker": "^4.1.0",
+    "jsonwebtoken": "^8.1.0",
+    "lodash": "^4.16.4",
+    "mongoose": "^4.11.14",
+    "morgan": "~1.9.0",
+    "nodemailer": "^4.4.0",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.1.0",
+    "passport-local": "^1.0.0",
+    "request": "^2.83.0",
+    "shortid": "^2.2.8",
+    "url": "^0.11.0"
+  }
+}

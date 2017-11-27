@@ -1,0 +1,14 @@
+.backlog {
+  margin-right: 5px;
+  padding: .2em;
+
+  .tasks-list {
+    list-style-type: none;
+    -webkit-margin-after: 0px;
+    -webkit-margin-before: 0px;
+    -webkit-padding-start: 0px;
+    margin-top: 1em;
+    box-shadow: 1px 3px 8px #888;
+    padding: 2em;
+  }
+}
