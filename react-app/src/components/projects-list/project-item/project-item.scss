@@ -1,0 +1,56 @@
+.ProjectItem {
+    display: block;
+    float: left;
+    min-width: 23em;
+    padding: .5em;
+    margin: .5em;
+    box-shadow: 1px 3px 8px #888;
+
+
+    &-link {
+        text-decoration: none;
+        color: cornflowerblue;
+        font-weight: 400;
+        display: block;
+        font-size: 1.2em;
+        font-weight: 400;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    small {
+        display: inline;
+
+        strong {
+            margin-right: 2em;
+        }
+
+        .link {
+            display: inline;
+            font-size: 1em;
+        }
+
+        span.status-badge {
+            float: right;
+            padding: .1em 2em;
+            margin: 0px;
+            border-radius: 2em;
+            width: 7em;
+            text-align: center;
+            color: #fff;
+
+            &-1 {
+                background-color: #616161;
+            }
+            &-2 {
+                background-color: #1976D2;
+            }
+            &-3 {
+                background-color: #388E3C;
+            }
+
+        }
+    }
+}

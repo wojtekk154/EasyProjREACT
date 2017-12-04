@@ -1,7 +1,6 @@
 import React from 'react';
 // styles scss
 import './side-panel.scss';
-import Header from "../header/header";
 import logo from '../../assets/img/logo.png';
 
 var FontAwesome = require('react-fontawesome');
@@ -24,16 +23,16 @@ export default class SidePanel extends React.Component {
 
 	setLayout(layout) {
 		switch (true) {
-			case layout.sidebarOpened: return 'sidebarOpened';
-			case layout.sidebarIcons: return 'sidebarIcons';
-			case layout.sidebarClosed: return 'sidebarClosed';
-			default: return "sidebarOpened";
+			case layout.sidebarOpened: return 'opened';
+			case layout.sidebarIcons: return 'icons';
+			case layout.sidebarClosed: return 'closed';
+			default: return "opened";
 		}
 	}
 
-	renderName(name){
+	renderName(name) {
 		return (
-			<span className="menu-text">
+			<span className="link-text">
 				{name}
 			</span>
 		)
@@ -41,12 +40,12 @@ export default class SidePanel extends React.Component {
 
 	renderItem(item, i) {
 		return (
-				<li key={i}>
-					<a href={item.url}>
-						<FontAwesome name={item.icon} size='2x' />
-						{this.setLayout(this.props.layout) !==  "sidebarIcons" ? this.renderName(item.name) : ''}
-					</a>
-				</li>
+			<li key={i}>
+				<a href={item.url}>
+					<FontAwesome name={item.icon} size='2x'/>
+					{this.setLayout(this.props.layout) !== "sidebarIcons" ? this.renderName(item.name) : ''}
+				</a>
+			</li>
 		)
 	}
 
@@ -69,13 +68,13 @@ export default class SidePanel extends React.Component {
 
 	render() {
 
-		const sitePanelClass = `site-panel-menu ${this.setLayout(this.props.layout)}`;
+		const sitePanelClass = `SidePanel-nav-${this.setLayout(this.props.layout)}`;
 		return (
-			<div className="panel-container">
+			<div className="SidePanel">
 				{this.props.layout.sidebarOpened ? this.titleHeader() : this.icoHeader()}
 
-				<section className="side-panel-nav">
-					<ul className={sitePanelClass}>
+				<section className="SidePanel-nav">
+					<ul className={`SidePanel-nav-menu ${sitePanelClass}`}>
 						{items.map((item, i) => this.renderItem(item, i))}
 					</ul>
 				</section>

@@ -10,6 +10,7 @@ export default (state = initialState, action) => {
 	switch (action.type) {
 		case act.SPRINT_LOADING:
 			return {...state, isLoading: action.isLoading};
+
 		case act.SPRINT_RECEIVED:
 			return {...state, sprints: action.recivedSprints};
 		case act.SPRINT_ERROR:

@@ -27,8 +27,6 @@ export default class TaskItem extends Component {
 	onDragStart(e) {
 		console.log(e);
 		e.dataTransfer.effectAllowed = 'move';
-		// e.dataTransfer.setData('text/html', this.props.title);
-		// console.log('dragStart',e, e.target);
 	}
 
 	onDragEnter(e) {
@@ -48,9 +46,6 @@ export default class TaskItem extends Component {
 	onDrop(e) {
 		e.preventDefault();
 		let newTasks = Object.assign({}, this.props.tasks);
-		console.log(this.props.sprint);
-
-	//	.splice( index, 0, item );
 	}
 
 	onDragEnd(e) {

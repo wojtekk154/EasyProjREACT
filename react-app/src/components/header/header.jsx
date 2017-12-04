@@ -42,8 +42,8 @@ export default class Header extends React.Component {
 	render() {
 		return (
 			<div>
-				<header className="headerBar">
-					<div className="logo" onClick={($event) => this.switchLayout($event)}>
+				<header className="Header">
+					<div className="Header-logo" onClick={($event) => this.switchLayout($event)}>
 						<FontAwesome name='bars'/>
 					</div>
 					<ul>

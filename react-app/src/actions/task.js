@@ -14,7 +14,6 @@ export const errorTask = (hasError) => {
 	}
 };
 export const recivedTasks = (recivedTasks) => {
-	console.log(recivedTasks)
 	return {
 		type: action.TASK_RECEIVED,
 		recivedTasks
@@ -57,10 +56,11 @@ export const fetchTasks = (params, token) => {
 				})
 				.then(tasks => {
 					let sortedTasks = {};
+
 					tasks.map(task=> {
 						(sortedTasks[task.sprint ? task.sprint : 'backlog'] = sortedTasks[task.sprint ? task.sprint : 'backlog'] || [] ).push(task);
 					});
-					console.log(sortedTasks);
+
 					dispatch(loadingTasks(false));
 					dispatch(recivedTasks(sortedTasks));
 				});

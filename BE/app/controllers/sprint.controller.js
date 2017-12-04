@@ -2,13 +2,15 @@ const express = require('express');
 let app = express();
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
-
+var _ = require('lodash');
 const Sprint = require('../models/sprint.model');
 
 exports.query = (req, res) => {
     Sprint.find({project: req.query.project}, (err, sprints) => {
+        let temp = _.orderBy(sprints, 'start_date', 'desc')
+        console.log(temp)
         if (err) return res.status(404).send('Not Fount');
-        res.json(sprints);
+        res.json(temp);
     })
 };
 

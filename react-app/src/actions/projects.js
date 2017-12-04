@@ -1,6 +1,5 @@
 import * as action from './action.types';
 import * as conf from '../config';
-import {fetchLoginUser} from "./auth";
 
 export const loadingProjects = (isLoading) => {
 	return {
@@ -56,7 +55,7 @@ export const getProjects = (user, token) => {
 	const tokenHeaders = {'Content-Type': 'application/json', 'access-token': `${token}`};
 	return (dispatch) => {
 		dispatch(loadingProjects(true));
-		console.log(`${conf.apiBaseUrl}/projects?user=${user}`);
+
 		try {
 			fetch(`${conf.apiBaseUrl}/projects?user=${user}`, {
 				method: 'GET',
@@ -101,7 +100,7 @@ export const getCurrentProject = (id, token) => {
 	}
 }
 
-export const addProject = (data, token) =>{
+export const addProject = (data, token) => {
 	const tokenHeaders = {'Content-Type': 'application/json', 'access-token': `${token}`};
 	return (dispatch) => {
 		try {

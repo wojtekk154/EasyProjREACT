@@ -1,22 +1,15 @@
-.headerBar {
+.Header {
   background-color: #bccfd5;
   min-height: 48px;
   display: block;
 
 
-  .logo {
+  &-logo {
     float: left;
     padding: 14px;
     margin-left: .7em;
     display: inline-block;
 
-    .logoImage {
-      width: 35px;
-      height: 35px;
-      display: inline-block;
-      background-image: url('../../assets/img/logo.png');
-      background-size: cover;
-    }
   }
 
   ul {

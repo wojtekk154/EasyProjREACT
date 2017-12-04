@@ -67,7 +67,6 @@ export const fetchLoginUser = (data) => {
 					return response;
 				})
 				.then((auth) => {
-					console.log(auth);
 					dispatch(layout.iconsSideBar(true));
 					dispatch(loginSuccess(auth));
 				})

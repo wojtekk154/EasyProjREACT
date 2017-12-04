@@ -26,7 +26,7 @@ export default class TasksList extends Component {
 
 	render() {
 		const {name, sprint, listTasks} = this.props;
-		console.log(this.props);
+
 		return (
 			<div>
 				<section className='backlog'>

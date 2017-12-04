@@ -26,20 +26,27 @@ export default class Login extends React.Component {
 
 	render() {
 		return (
-			<div className="login-component">
-				<form ref="loginForm" className="login-form" onSubmit={($event)=> this.logInUser($event)}>
-					<label className="text-field"> <FontAwesome name="at"/> <input ref="email" type="email" placeholder="email"/></label>
-					<label className="text-field"> <FontAwesome name="unlock-alt"/> <input ref="password" type="password"
-																																								 placeholder="Password"/></label>
+			<div className="Login">
+				<form ref="loginForm" className="Login-login-form" onSubmit={($event) => this.logInUser($event)}>
+					<label className="Login-login-form-text-field"> <FontAwesome name="at"/>
+						<input ref="email" type="email" placeholder="email"/>
+					</label>
 
-					<label className="remember-me"><input type="checkbox" name="remember_me"/> Remember me!</label>
+					<label className="Login-login-form-text-field"> <FontAwesome name="unlock-alt"/>
+						<input ref="password" type="password" placeholder="Password"/>
+					</label>
 
-					<input type="submit" className='submit-button'/>
+					<label className="Login-remember-me">
+						<input type="checkbox" name="remember_me"/> Remember me!
+					</label>
 
-					<div className="additional-links">
-						<Link to={'/register'} className="additional-link">Create new accout</Link>
+					<input type="submit" className='Login-submit-button'/>
 
-						<Link to={'#'} className="additional-link">Reset password</Link>
+					<div className="Login-additional-links">
+						<Link to={'/register'} className="Login-additional-links-additional-link">Create new
+							accout</Link>
+
+						<Link to={'#'} className="Login-additional-links-additional-link">Reset password</Link>
 					</div>
 				</form>
 			</div>

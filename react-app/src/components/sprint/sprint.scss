@@ -1,0 +1,50 @@
+ul.sprint-list {
+  list-style: none;
+  -webkit-margin-after: 0px;
+  -webkit-margin-before: 0px;
+  -webkit-padding-start: 0px;
+  margin: -.5em;
+
+  li{
+    display: block;
+    float: left;
+    min-width: 20em;
+    margin: .5em;
+    padding: .5em;
+    box-shadow: 1px 3px 8px #888;
+
+    div {
+      margin: .2em 0;
+    }
+    .badge {
+      padding: .1em 1em;
+      color: white;
+      border-radius: 1em;
+
+      &-1 {
+        background-color: #616161;
+      }
+      &-2 {
+        background-color: #1976D2;
+      }
+      &-3 {
+        background-color: #388E3C;
+      }
+    }
+  }
+}
+
+.sprints-header {
+  font-weight: 400;
+  font-size: 1.6em;
+  padding: 1em 0;
+}
+
+.form-modal {
+  margin: 1em 0;
+}
+
+.project-status {
+  display: block;
+  margin: 1em 0;
+}

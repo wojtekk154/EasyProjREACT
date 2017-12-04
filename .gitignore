@@ -1,0 +1,8 @@
+# WebStorm 
+./BE/node_modules
+./BE/.idea/
+./react-app/.idea/
+./react-app/node_modules
+
+/react-app/node_modules
+/BE/node_modules
