@@ -48,3 +48,6 @@ export const TASK_CREATED = 'TASK_CREATED';
 export const TASK_CHANGED = 'TASK_CHANGED';
 export const TASK_DELETED = 'TASK_DELETED';
 
+export const TASK_DRAG_START = 'TASK_DRAG_START';
+export const TASK_DROP = 'TASK_DROP';
+

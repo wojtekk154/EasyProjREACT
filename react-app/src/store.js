@@ -16,7 +16,4 @@ const enchancers = compose(
 const defaultState = {};
 const store = createStore(rootReducer, defaultState, enchancers);
 
-export default store;
-
-
-
+export default store; 

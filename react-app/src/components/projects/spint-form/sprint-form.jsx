@@ -20,11 +20,10 @@ export default class SprintForm extends React.Component {
 
 	submitSprint(e) {
 		e.preventDefault();
-
+		this.props.createSprint(this.state, this.props.token);
 	}
 
 	handleChangeValue(e) {
-		console.log(this.state)
 		this.setState({ [e.target['name']]: e.target.value });
 	}
 
@@ -32,16 +31,16 @@ export default class SprintForm extends React.Component {
 		return (
 			<div>
  				<form className="sprint-form" onSubmit={this.submitSprint}>
-					<div className="full-width-row">
-						<div className="full-width-col">
+					<div className="row-full-width">
+						<div className="column-full-width">
 							<InputElement labelName={"Project's Name"} fieldlName={'name'} value={this.state.name}
 										  inputType={'text'}
 										  onChangeValue={this.handleChangeValue} />
 						</div>
 					</div>
 
-					<div className="full-width-row">
-						<div className="full-width-col">
+					<div className="row-full-width">
+						<div className="column-full-width">
 							<TextAreaElement
 								labelName={"Description"}
 								fieldName={'description'}
@@ -51,17 +50,28 @@ export default class SprintForm extends React.Component {
 						</div>
 					</div>
 
-					<div className="row-form">
-						<div className="col-half-1-form">
+					<div className="row-double-columns">
+						<div className="column-first">
 							<InputElement
-								labelName={"Project's Key"}
-								fieldlName={'project_key'}
-								value={this.state['project_key']}
-								inputType={'text'}
-								onChangeValue={this.handleChangeValue}/>
+								labelName={"Sprint's Start Date"}
+								fieldlName={'start_date'}
+								value={this.state['start_date'] }
+								inputType={'date'}
+								onChangeValue={this.handleChangeValue}
+							/>
 						</div>
-						<div className="col-half-2-form">
-
+						<div className="column-second">
+							<InputElement
+								labelName={"Sprint's End Date"}
+								fieldlName={'end_date'}
+								value={this.state['end_date'] }
+								inputType={'date'}
+								onChangeValue={this.handleChangeValue}
+							/>
+						</div>
+					</div>
+					<div className="row-double-columns">
+						<div className="column-first">
 							<SelectElement
 								labelName={'Status'}
 								fieldName={'status'}
@@ -69,6 +79,9 @@ export default class SprintForm extends React.Component {
 								answers={[1, 2, 3]}
 								onChangeValue={this.handleChangeValue}
 							/>
+						</div>
+						<div className="column-second">
+
 						</div>
 					</div>
 					<input type='submit' className="submit-button"/>

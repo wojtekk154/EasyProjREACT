@@ -32,8 +32,8 @@ export default class Project extends Component {
 					</div>
 				</div>
 				<div className="row-full-width">
-					<div className="column-full-width  Project-container-shadow">
-						<TasksList {...this.props} key={'last'} name={'Backlog'} sprint={{}}
+					<div className="column-full-width Project-container-shadow">
+						<TasksList {...this.props} key={'last'} name={'Backlog'} sprint={{}} listname={'backlog'}
 								   listTasks={this.props.tasks.tasks['backlog']}/>
 					</div>
 				</div>

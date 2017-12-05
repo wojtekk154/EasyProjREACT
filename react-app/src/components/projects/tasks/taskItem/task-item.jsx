@@ -25,14 +25,12 @@ export default class TaskItem extends Component {
 	}
 
 	onDragStart(e) {
-		console.log(e);
-		e.dataTransfer.effectAllowed = 'move';
+		console.log("ON START", e.target.tabIndex)
+		 this.props.dragStartTask({index:  e.target.tabIndex});
 	}
 
 	onDragEnter(e) {
 		e.preventDefault();
-
-		return true;
 	}
 
 	onDragOver(e) {
@@ -45,6 +43,7 @@ export default class TaskItem extends Component {
 
 	onDrop(e) {
 		e.preventDefault();
+		console.log("ON DROP", e.target.tabIndex)
 		let newTasks = Object.assign({}, this.props.tasks);
 	}
 
@@ -54,7 +53,7 @@ export default class TaskItem extends Component {
 	}
 
 	render() {
-		const {task, index} = this.props;
+		const {taskItem, index} = this.props;
 
 		return (
 			<li draggable={true}
@@ -64,15 +63,9 @@ export default class TaskItem extends Component {
 					onDragLeave={this.onDragLeave}
 					onDrop={this.onDrop}
 					onDragEnd={this.onDragEnd}
-					id={`task-${task._id}`}
+					id={`task-${taskItem._id}`}
 					tabIndex={index}>
-				<span className={conf.kindClassName[task.kind]}><FontAwesome name={conf.kindIco[task.kind]}/></span>
-				<span className={conf.priorityClassName[task.priority]}>
-					<FontAwesome name={conf.priorityIco[task.priority]}/>
-				</span>
-				<span className="title">{task.name}</span>
-				<span className="estimation">estimated: <span className="badge">{task.estimate}</span></span>
-			</li>
+							</li>
 		);
 	}
 }

@@ -38,6 +38,13 @@ export const removedTask = (removed) => {
 	}
 };
 
+export const onDropTask = (object) => {
+	return {
+		type: action.TASK_DROP,
+		object
+	}
+};
+
 
 export const fetchTasks = (params, token) => {
 	const tokenHeaders = {'Content-Type': 'application/json', 'access-token': `${token}`};

@@ -7,6 +7,7 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
+	let newState = Object.assign({}, state);
 	switch (action.type) {
 		case act.TASK_LOADING:
 			return {...state, isLoading: action.isLoading};
@@ -22,6 +23,12 @@ export default (state = initialState, action) => {
 			})};
 		case act.TASK_DELETED:
 			return {...state};
+
+		case act.TASK_DROP:
+			newState.tasks[action.object.listname] = [
+				...action.object.list
+			];
+			return state;
 		default:
 			return state;
 	}

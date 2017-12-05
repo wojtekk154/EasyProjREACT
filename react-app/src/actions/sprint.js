@@ -13,6 +13,8 @@ export const errorSprint = (hasError) => {
 		hasError
 	}
 };
+
+
 export const recivedSprints = (recivedSprints) => {
 	return {
 		type: action.SPRINT_RECEIVED,

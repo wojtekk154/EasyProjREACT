@@ -43,7 +43,7 @@ export default class SidePanel extends React.Component {
 			<li key={i}>
 				<a href={item.url}>
 					<FontAwesome name={item.icon} size='2x'/>
-					{this.setLayout(this.props.layout) !== "sidebarIcons" ? this.renderName(item.name) : ''}
+					{this.setLayout(this.props.layout) !== "icons" ? this.renderName(item.name) : ''}
 				</a>
 			</li>
 		)

@@ -31,20 +31,20 @@ export default class Register extends React.Component {
 
 	render() {
 		return (
-			<div className="register-component">
-				<form ref="registerForm" className="login-form" onSubmit={this.registerUser}>
-					<label className="text-field"> <FontAwesome name="at"/> <input ref="email" type="email" placeholder="email"/></label>
-					<label className="text-field"> <FontAwesome name="user"/> <input ref="username" type="text"
+			<div className="Register">
+				<form ref="registerForm" className="Register-form" onSubmit={this.registerUser}>
+					<label className="Register-form-text"> <FontAwesome name="at"/> <input ref="email" type="email" placeholder="email"/></label>
+					<label className="Register-form-text"> <FontAwesome name="user"/> <input ref="username" type="text"
 																																					 placeholder="User Name"/></label>
-					<label className="text-field"> <FontAwesome name="unlock-alt"/> <input ref="password" type="password"
+					<label className="Register-form-text"> <FontAwesome name="unlock-alt"/> <input ref="password" type="password"
 																																								 placeholder="Password"/></label>
-					<label className="text-field"> <FontAwesome name="unlock-alt"/> <input ref="password_confirmation"
+					<label className="Register-form-text"> <FontAwesome name="unlock-alt"/> <input ref="password_confirmation"
 																																								 type="password"
 																																								 placeholder="Password Confirmation"/></label>
 
-					<input type="submit" className='submit-button'/>
+					<input type="submit" className='Register-form-submit'/>
 
-					<div className="additional-links">
+					<div className="Register-form-additional-links">
 						<Link to={'/login'} className="additional-link">Sign In</Link>
 
 						<Link to={'#'} className="additional-link">Reset password</Link>
