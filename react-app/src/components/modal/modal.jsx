@@ -7,18 +7,17 @@ var FontAwesome = require('react-fontawesome');
 export default class Modal extends React.Component {
 	constructor(props) {
 		super(props);
-
 		this.handleClickOpen = this.handleClickOpen.bind(this);
 		this.handleRequestClose = this.handleRequestClose.bind(this);
 	}
 
 	handleClickOpen = () => {
-		let modal = document.querySelector('#myModal');
+		let modal = document.querySelector(`#myModal-${this.props.className}`);
 		modal.style.display = "block";
 	};
 
 	handleRequestClose = () => {
-		let modal = document.querySelector('#myModal');
+		let modal = document.querySelector(`#myModal-${this.props.className}`);
 		modal.style.display = "none";
 	};
 
@@ -29,7 +28,7 @@ export default class Modal extends React.Component {
 					<FontAwesome name={'plus'} className="Modal-nextSize"/> {this.props.buttonName}
 				</button>
 
-				<div id="myModal" className="Modal-modal-window">
+				<div id={`myModal-${this.props.className}`} className="Modal-modal-window">
 					<div className="modal-content">
 						<div className="modal-header">
 							{this.props.title}

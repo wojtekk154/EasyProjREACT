@@ -23,12 +23,10 @@ export default class InputElement extends React.Component {
 	}
 
 	handleValue(e) {
-		console.log(e.target.value);
 		this.props.onChangeValue(e);
 	}
 
 	render() {
-		console.log(this.props.value);
 		return (
 			<div className='input-group'>
 				<input

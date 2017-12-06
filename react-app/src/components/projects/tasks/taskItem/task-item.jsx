@@ -25,7 +25,6 @@ export default class TaskItem extends Component {
 	}
 
 	onDragStart(e) {
-		console.log("ON START", e.target.tabIndex)
 		 this.props.dragStartTask({index:  e.target.tabIndex});
 	}
 
@@ -43,7 +42,6 @@ export default class TaskItem extends Component {
 
 	onDrop(e) {
 		e.preventDefault();
-		console.log("ON DROP", e.target.tabIndex)
 		let newTasks = Object.assign({}, this.props.tasks);
 	}
 

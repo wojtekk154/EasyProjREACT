@@ -76,7 +76,32 @@ export const fetchTasks = (params, token) => {
 		}
 	}
 };
+
 export const fetchTaskCreate = (params, token) =>{
+	const tokenHeaders = {'Content-Type': 'application/json', 'access-token': `${token}`};
+	return (dispatch) => {
+		try {
+			fetch(`${conf.apiBaseUrl}/tasks/${params._id}`, {
+				method: 'PUT',
+				headers: tokenHeaders,
+				body: JSON.stringify(params)
+			})
+				.then(response => {
+					return response.json();
+				})
+				.then(response => {
+					return response
+				})
+				.then(response => {
+					console.log(response);
+				});
+		} catch (e) {
+			dispatch(errorTask(true));
+		}
+	}
+};
+
+export const fetchTasksUpdate = (params, token) =>{
 	const tokenHeaders = {'Content-Type': 'application/json', 'access-token': `${token}`};
 	return (dispatch) => {
 		try {
@@ -99,12 +124,7 @@ export const fetchTaskCreate = (params, token) =>{
 		}
 	}
 };
-export const fetchTasksUpdate = (params, token) =>{
-	const tokenHeaders = {'Content-Type': 'application/json', 'access-token': `${token}`};
-	return (dispatch) => {
-		dispatch(errorTask(true));
-	}
-};
+
 export const fetchTasksRemove = (params, token) =>{
 	const tokenHeaders = {'Content-Type': 'application/json', 'access-token': `${token}`};
 	return (dispatch) => {

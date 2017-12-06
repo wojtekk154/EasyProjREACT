@@ -29,16 +29,18 @@ export default class TextAreaElement extends React.Component {
 					onChange={this.handleValue}
 					value={this.props.value || ""}
 					required={true}
-				></textarea>
-				<span className="highlight"></span>
-				<span className="bar"></span>
+				>
+				</textarea>
+				<span className="highlight">
+				</span>
+				<span className="bar">
+				</span>
 				<label>{this.props.labelName}</label>
 			</div>
 		);
 	}
 
 	handleValue(e) {
-		console.log(this.props);
 		this.props.onChangeValue(e);
 	}
 }

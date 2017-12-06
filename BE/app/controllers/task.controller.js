@@ -2,13 +2,15 @@ const express = require('express');
 let app = express();
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
+var _ = require('lodash');
 
 const Task = require('../models/task.model');
 
 exports.query = (req, res) => {
     Task.find({project: req.query.project}, (err, tasks) => {
         if (err) return res.status(404).send('Not Fount');
-        res.json(tasks);
+        var sorted = _.orderBy(tasks, ['index'], ['asc']);
+        res.json(sorted);
     })
 };
 

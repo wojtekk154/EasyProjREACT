@@ -16,11 +16,7 @@ export default class Project extends Component {
 		this.state = {...this.props};
 		this.props.getCurrentProject(this.props.id, this.props.user['access_token']);
 		this.props.fetchSprints(this.props.id, this.props.user['access_token']);
-		this.props.fetchTasks(this.props.id, this.props.user['access_token']);
 	}
-
-
-
 
 	render() {
 		return (
@@ -33,17 +29,15 @@ export default class Project extends Component {
 				</div>
 				<div className="row-full-width">
 					<div className="column-full-width Project-container-shadow">
-						<TasksList {...this.props} key={'last'} name={'Backlog'} sprint={{}} listname={'backlog'}
-								   listTasks={this.props.tasks.tasks['backlog']}/>
+						<TasksList
+							{...this.props}
+							key={'last'}
+							name={'Backlog'}
+							sprint={{}}
+							listname={'backlog'}
+						/>
 					</div>
 				</div>
-
-
-
-
-
-
-
 			</div>
 		)
 	}

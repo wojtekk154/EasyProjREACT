@@ -10,7 +10,7 @@ import history from './utils/history';
 import SidePanel from './components/sidepanel/side-panel';
 import Header from './components/header/header';
 import Sprint from './components/sprint/sprint';
-
+import NotFound from '../src/pages/NotFound/NotFound'
 import ProjectsList from './components/projects-list/projects-list';
 // styles scss
 import 'styles/index.scss';
@@ -71,6 +71,7 @@ export default class Main extends React.Component {
 												 render={({match}) => <Project id={match.params.projectId} {...this.props} />}/>
 									<Route path="/projects/:projectId/sprint/:sprintId"
 												 render={({match}) => <Sprint projectId={match.params.projectId} sprintId={match.params.sprintId} {...this.props} />}/>
+									<Route path="*"	render={() => <NotFound /> } />
 								</Switch>
 							</div>
 

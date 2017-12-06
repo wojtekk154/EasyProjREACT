@@ -6,13 +6,13 @@ import SelectElement from '../../../elements/select/select-element';
 export default class SprintForm extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {	};
+		this.state = {};
 
 		this.submitSprint = this.submitSprint.bind(this);
 		this.handleChangeValue = this.handleChangeValue.bind(this);
 	}
 
-	componentDidMount(){
+	componentDidMount() {
 		this.setState({
 			project_id: this.props.projectId
 		});
@@ -24,18 +24,22 @@ export default class SprintForm extends React.Component {
 	}
 
 	handleChangeValue(e) {
-		this.setState({ [e.target['name']]: e.target.value });
+		this.setState({[e.target['name']]: e.target.value});
 	}
 
-	render () {
+	render() {
 		return (
 			<div>
- 				<form className="sprint-form" onSubmit={this.submitSprint}>
+				<form className="sprint-form" onSubmit={this.submitSprint}>
 					<div className="row-full-width">
 						<div className="column-full-width">
-							<InputElement labelName={"Project's Name"} fieldlName={'name'} value={this.state.name}
-										  inputType={'text'}
-										  onChangeValue={this.handleChangeValue} />
+							<InputElement
+								labelName={"Project's Name"}
+								fieldlName={'name'}
+								value={this.state.name}
+								inputType={'text'}
+								onChangeValue={this.handleChangeValue}
+							/>
 						</div>
 					</div>
 
@@ -55,7 +59,7 @@ export default class SprintForm extends React.Component {
 							<InputElement
 								labelName={"Sprint's Start Date"}
 								fieldlName={'start_date'}
-								value={this.state['start_date'] }
+								value={this.state['start_date']}
 								inputType={'date'}
 								onChangeValue={this.handleChangeValue}
 							/>
@@ -64,7 +68,7 @@ export default class SprintForm extends React.Component {
 							<InputElement
 								labelName={"Sprint's End Date"}
 								fieldlName={'end_date'}
-								value={this.state['end_date'] }
+								value={this.state['end_date']}
 								inputType={'date'}
 								onChangeValue={this.handleChangeValue}
 							/>

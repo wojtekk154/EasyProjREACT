@@ -2,7 +2,14 @@
     margin-right: 5px;
     padding: .2em;
 
-    .tasks-list {
+    &-header {
+
+        &-modal {
+
+        }
+    }
+
+    .TasksList {
         list-style-type: none;
         -webkit-margin-after: 0px;
         -webkit-margin-before: 0px;
@@ -74,8 +81,6 @@
                 border-top: 1px solid #16b4d0;
             }
         }
-
-
 
         .placeholder {
             background: rgb(255, 240, 120);
