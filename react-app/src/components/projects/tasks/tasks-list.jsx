@@ -14,31 +14,6 @@ var FontAwesome = require('react-fontawesome');
 var placeholder = document.createElement("li");
 placeholder.className = "placeholder";
 
-// sort components
-const SortableItem = SortableElement(({value}) =>
-	<li>
-		<span className={conf.kindClassName[value.kind]}>
-			<FontAwesome name={conf.kindIco[value.kind]}/>
-		</span>
-		<span className={conf.priorityClassName[value.priority]}>
-			<FontAwesome name={conf.priorityIco[value.priority]} />
-		</span>
-		<span className="title">{value.name}</span>
-		<span className="estimation">
-			estimated: <span className="badge">{value.estimate}</span>
-		</span>
-	</li>
-);
-
-const SortableList = SortableContainer(({items}) => {
-	return (
-		<ul className="TasksList">
-			{items.map((value, index) => (
-				<SortableItem key={`item-${index}`} index={index} value={value}/>
-			))}
-		</ul>
-	);
-});
 
 
 export default class TasksList extends Component {
@@ -67,7 +42,7 @@ export default class TasksList extends Component {
 		});
 		this.state.list.map((item, index) => {
 			item.index = index;
-			this.props.fetchTaskCreate(item, this.props.user.access_token);
+			this.props.fetchTasksUpdate(item, this.props.user.access_token);
 		});
 		this.props.onDropTask({ list: this.state.list, listname: this.props.listname });
 	};
@@ -79,12 +54,12 @@ export default class TasksList extends Component {
 
 		return (
 			<div>
-				<section className='backlog'>
-					<div className="header">
+				<section className='TasksList'>
+					<div className="TasksList-header">
 						{name}
 
 						<Modal
-							className="backlog-header-modal"
+							className="TasksList-header-modal"
 							children={TaskForm}
 							title={"Create new task"}
 							actionType={'create'}
@@ -99,3 +74,29 @@ export default class TasksList extends Component {
 		);
 	}
 }
+
+// sort components
+const SortableItem = SortableElement(({value}) =>
+	<li>
+		<span className={conf.kindClassName[value.kind]}>
+			<FontAwesome name={conf.kindIco[value.kind]}/>
+		</span>
+		<span className={conf.priorityClassName[value.priority]}>
+			<FontAwesome name={conf.priorityIco[value.priority]} />
+		</span>
+		<span className="title">{value.name}</span>
+		<span className="estimation">
+			estimated: <span className="badge">{value.estimate}</span>
+		</span>
+	</li>
+);
+
+const SortableList = SortableContainer(({items}) => {
+	return (
+		<ul className="TasksList-list">
+			{items.map((value, index) => (
+				<SortableItem key={`item-${index}`} index={index} value={value}/>
+			))}
+		</ul>
+	);
+});

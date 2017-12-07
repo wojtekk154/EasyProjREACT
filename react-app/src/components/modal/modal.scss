@@ -25,9 +25,10 @@
 
         .modal-content {
             background-color: #fffffa;
-            margin: 15% auto;
+            margin: 140px auto;
             padding: 20px;
-            width: 50%;
+            min-width: 500px;
+            max-width: 630px;
 
             .modal-header {
                 font-weight: 600;

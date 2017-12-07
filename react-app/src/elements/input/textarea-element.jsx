@@ -28,7 +28,7 @@ export default class TextAreaElement extends React.Component {
 					name={this.props.fieldName}
 					onChange={this.handleValue}
 					value={this.props.value || ""}
-					required={true}
+					required={this.props.required}
 				>
 				</textarea>
 				<span className="highlight">

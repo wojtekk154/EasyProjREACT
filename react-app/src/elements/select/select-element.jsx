@@ -63,7 +63,7 @@ export default class SelectElement extends React.Component {
 					name={this.props.fieldName}
 					value={this.props.value}
 					onChange={this.handleValue}
-					required={true}
+					required={this.props.required}
 				>
 					<option key={0}> Choose</option>
 					{this.props.answers.map((item, index) => this.renderAnswers(item, index, this.props.fieldName))}

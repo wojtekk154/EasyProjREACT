@@ -3,6 +3,8 @@ import InputElement from '../../../elements/input/input-element';
 import TextAreaElement from '../../../elements/input/textarea-element';
 import SelectElement from '../../../elements/select/select-element';
 
+import './spirnt-form.scss';
+
 export default class SprintForm extends React.Component {
 	constructor(props) {
 		super(props);
@@ -30,7 +32,7 @@ export default class SprintForm extends React.Component {
 	render() {
 		return (
 			<div>
-				<form className="sprint-form" onSubmit={this.submitSprint}>
+				<form className="SprintForm" onSubmit={this.submitSprint}>
 					<div className="row-full-width">
 						<div className="column-full-width">
 							<InputElement
@@ -85,10 +87,16 @@ export default class SprintForm extends React.Component {
 							/>
 						</div>
 						<div className="column-second">
-
 						</div>
 					</div>
-					<input type='submit' className="submit-button"/>
+					<div className="row-double-columns">
+						<div className="column-first">
+							<input type='submit' className="SprintForm-submit"/>
+						</div>
+						<div className="column-second">
+						</div>
+					</div>
+
 				</form>
 			</div>
 		)

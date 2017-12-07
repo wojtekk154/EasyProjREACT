@@ -34,7 +34,7 @@ export default class InputElement extends React.Component {
 					name={this.props.fieldlName}
 					value={this.props.value || ""}
 					onChange={this.handleValue}
-					required={true}
+					required={this.props.required}
 				/>
 				<span className="highlight"></span>
 				<span className="bar"></span>

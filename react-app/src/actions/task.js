@@ -77,7 +77,7 @@ export const fetchTasks = (params, token) => {
 	}
 };
 
-export const fetchTaskCreate = (params, token) =>{
+export const fetchTasksUpdate = (params, token) =>{
 	const tokenHeaders = {'Content-Type': 'application/json', 'access-token': `${token}`};
 	return (dispatch) => {
 		try {
@@ -101,7 +101,7 @@ export const fetchTaskCreate = (params, token) =>{
 	}
 };
 
-export const fetchTasksUpdate = (params, token) =>{
+export const fetchTaskCreate = (params, token) =>{
 	const tokenHeaders = {'Content-Type': 'application/json', 'access-token': `${token}`};
 	return (dispatch) => {
 		try {
