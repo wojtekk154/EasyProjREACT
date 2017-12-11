@@ -86,7 +86,7 @@ const SortableItem = SortableElement(({value}) =>
 		</span>
 		<span className="title">{value.name}</span>
 		<span className="estimation">
-			estimated: <span className="badge">{value.estimate}</span>
+			estimated: <span className="badge">{value.estimate || '0'}</span>
 		</span>
 	</li>
 );

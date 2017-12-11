@@ -13,7 +13,10 @@ var FontAwesome = require('react-fontawesome');
 export default class Project extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {...this.props};
+		this.state = {
+			...this.props
+		};
+
 		this.props.getCurrentProject(this.props.id, this.props.user['access_token']);
 		this.props.fetchSprints(this.props.id, this.props.user['access_token']);
 	}
@@ -42,3 +45,6 @@ export default class Project extends Component {
 		)
 	}
 }
+
+
+// ^[0-9]{0,3}[h]{0,1}$|^[0-9]{0,2}[m]{0,1}$|^[0-9]{0,3}[h]{0,1}\s?[0-9]{0,2}[m]{0,1}$

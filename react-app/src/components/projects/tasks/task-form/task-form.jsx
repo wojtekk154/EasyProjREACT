@@ -5,29 +5,44 @@ import React from 'react';
 import InputElement from '../../../../elements/input/input-element';
 import TextAreaElement from '../../../../elements/input/textarea-element';
 import SelectElement from '../../../../elements/select/select-element';
+import DropDown from '../../../../elements/dropdown/dropdown';
+
 // Style
 import './task-form.scss';
+
 
 export default class TaskForm extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {
+			formErrors: {}
+		};
 		this.submitTask = this.submitTask.bind(this);
 		this.handleValue = this.handleValue.bind(this);
+		this.handleDropDown = this.handleDropDown.bind(this);
 	}
+
+	componentDidMount() {
+		this.setState({
+			project: this.props.id,
+			index: '0'
+		});
+	}
+
+
 
 	submitTask(e) {
 		e.preventDefault();
-
-		this.setState({
-			project: this.props.project.project._id
-		});
-
+		this.props.fetchTaskCreate(this.state, this.props.user.access_token);
 		console.log(this.state);
 	}
 
 	handleValue(e) {
-		this.setState({ [e.target['name']]: e.target.value })
+		this.setState({ [e.target['name']]: e.target.value });
+	}
+
+	handleDropDown(item) {
+		this.setState({ [item.name]: item.value });
 	}
 
 	render(){
@@ -41,6 +56,8 @@ export default class TaskForm extends React.Component {
 								fieldlName={'name'}
 								value={this.state.name}
 								inputType={'text'}
+								min={5}
+								max={30}
 								onChangeValue={this.handleValue}
 								required={true}
 							/>
@@ -61,22 +78,24 @@ export default class TaskForm extends React.Component {
 
 					<div className={'row-double-columns'}>
 						<div className={'column-first'}>
-							<SelectElement
+							<DropDown
 								labelName={'Priority'}
 								fieldName={'priority'}
 								value={this.state.priority}
 								answers={[1, 2, 3, 4, 5]}
-								onChangeValue={this.handleValue}
+								onChangeValue={this.handleDropDown}
+								searchInput={false}
 								required={true}
 							/>
 						</div>
 						<div className={'column-second'}>
-							<SelectElement
+							<DropDown
 								labelName={'Kind'}
 								fieldName={'kind'}
 								value={this.state.kind}
 								answers={[1, 2, 3, 4, 5]}
-								onChangeValue={this.handleValue}
+								onChangeValue={this.handleDropDown}
+								searchInput={false}
 								required={true}
 							/>
 						</div>
@@ -84,23 +103,25 @@ export default class TaskForm extends React.Component {
 
 					<div className={'row-double-columns'}>
 						<div className={'column-first'}>
-							<SelectElement
+							<DropDown
 								labelName={'Assigned to'}
 								fieldName={'assigned'}
 								value={this.state.assigned}
 								answers={['a', 'b']}
-								onChangeValue={this.handleValue}
+								onChangeValue={this.handleDropDown}
+								searchInput={true}
 								required={false}
 							/>
 						</div>
 						<div className={'column-second'}>
-							<SelectElement
+		 					<DropDown
 								labelName={'Status'}
 								fieldName={'status'}
 								value={this.state.status}
 								answers={[1, 2, 3, 4, 5]}
-								onChangeValue={this.handleValue}
-								required={true}
+								onChangeValue={this.handleDropDown}
+								searchInput={false}
+								required={false}
 							/>
 						</div>
 					</div>
@@ -112,6 +133,9 @@ export default class TaskForm extends React.Component {
 								fieldlName={'estimate'}
 								value={this.state.estimate}
 								inputType={'text'}
+								min={2}
+								max={10}
+								inputPattern={/^[0-9]{0,3}[h]{0,1}$|^[0-9]{0,2}[m]{0,1}$|^[0-9]{0,3}[h]{0,1}\s?[0-9]{0,2}[m]{0,1}$/i}
 								onChangeValue={this.handleValue}
 								required={false}
 							/>
@@ -122,6 +146,9 @@ export default class TaskForm extends React.Component {
 								fieldlName={'worked'}
 								value={this.state.worked}
 								inputType={'text'}
+								min={2}
+								max={10}
+								inputPattern={/^[0-9]{0,3}[h]{0,1}$|^[0-9]{0,2}[m]{0,1}$|^[0-9]{0,3}[h]{0,1}\s?[0-9]{0,2}[m]{0,1}$/i}
 								onChangeValue={this.handleValue}
 								required={false}
 							/>

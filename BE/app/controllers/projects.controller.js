@@ -36,8 +36,6 @@ exports.createProject = (req, res) => {
         cooperators: [req.body.cooperator]
     });
 
-    console.log(project);
-
     project.save((err, project) => {
         if (err) return res.status(400).send(err.errmsg);
         return res.json(project);

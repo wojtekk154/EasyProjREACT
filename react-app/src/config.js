@@ -16,6 +16,22 @@ export const kindName = {
 	5: 'Bug'
 };
 
+export const kindColor = {
+	1: '#4CAF50',
+	2: '#1E88E5',
+	3: '#00897B',
+	4: '#AB47BC',
+	5: '#C62828'
+};
+
+export const priorityColor = {
+	1: '#f44336',
+	2: '#4CAF50',
+	3: '#BDBDBD',
+	4: '#FF5722',
+	5: '#c62828'
+};
+
 export const kindIco = {
 	1: 'arrow-up',
 	2: 'check-square',
@@ -73,6 +89,3 @@ export const TaskStatusNames = {
 	4: 'In tests',
 	5: 'Done'
 };
-
-
-

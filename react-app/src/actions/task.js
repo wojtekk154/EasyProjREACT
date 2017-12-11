@@ -102,6 +102,7 @@ export const fetchTasksUpdate = (params, token) =>{
 };
 
 export const fetchTaskCreate = (params, token) =>{
+	console.log(JSON.stringify(params));
 	const tokenHeaders = {'Content-Type': 'application/json', 'access-token': `${token}`};
 	return (dispatch) => {
 		try {

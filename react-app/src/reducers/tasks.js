@@ -16,7 +16,8 @@ export default (state = initialState, action) => {
 		case act.TASK_ERROR:
 			return {...state, hasError: action.hasError};
 		case act.TASK_CREATED:
-			return {...state, sprints: [...state.sprints, action.created]};
+			newState.tasks.backlog.unshift(action.created);
+			return {...newState};
 		case act.TASK_CHANGED:
 			return {...state, sprints: state.sprints.filter(sprint => {
 				return sprint._id === action.updated._id ? action.updated : sprint

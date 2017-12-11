@@ -7,8 +7,7 @@ const Sprint = require('../models/sprint.model');
 
 exports.query = (req, res) => {
     Sprint.find({project: req.query.project}, (err, sprints) => {
-        let temp = _.orderBy(sprints, 'start_date', 'desc')
-        console.log(temp)
+        let temp = _.orderBy(sprints, 'start_date', 'desc');
         if (err) return res.status(404).send('Not Fount');
         res.json(temp);
     })
@@ -16,7 +15,6 @@ exports.query = (req, res) => {
 
 
 exports.getSprint = (req, res) => {
-    console.log(params);
     Sprint.findOne({}, (err, project) => {
         if (err) return res.status(404).send('Not Fount');
         res.json(project);

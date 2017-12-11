@@ -66,11 +66,32 @@ export default class Main extends React.Component {
 																component={Register} {...this.props} />
 
 									{/*Private Routes */}
-									<Route exact path="/" render={() => <ProjectsList {...this.props} />}/>
-									<Route exact path="/projects/:projectId"
-												 render={({match}) => <Project id={match.params.projectId} {...this.props} />}/>
-									<Route path="/projects/:projectId/sprint/:sprintId"
-												 render={({match}) => <Sprint projectId={match.params.projectId} sprintId={match.params.sprintId} {...this.props} />}/>
+
+
+									{/*<PrivateRoute authed={this.props.user.isLoggedIn} path={""} urlParams={null} {...this.props} />*/}
+									{/*<PrivateRoute authed={this.props.user.isLoggedIn} path={"/projects/:projectId"} urlParams={null} {...this.props} />*/}
+									{/*<PrivateRoute authed={this.props.user.isLoggedIn} path={"/projects/:projectId/sprint/:sprintId"} urlParams={null} {...this.props} />*/}
+
+
+
+
+
+
+									<Route exact
+										   path="/"
+										   render={({match}) => this.props.user.isLoggedIn ? <ProjectsList {...this.props} /> :
+											   <Redirect to={{pathname: '/login', state: {from: this.props.location}}}/> }
+									/>
+									<Route exact
+										   path="/projects/:projectId"
+										   render={({match}) => this.props.user.isLoggedIn ? <Project id={match.params.projectId} {...this.props} /> :
+											   <Redirect to={{pathname: '/login', state: {from: this.props.location}}}/> }
+									/>
+									<Route exact
+										   path="/projects/:projectId/sprint/:sprintId"
+										   render={({match}) => this.props.user.isLoggedIn ? <Sprint projectId={match.params.projectId} sprintId={match.params.sprintId} {...this.props} /> :
+											   <Redirect to={{pathname: '/login', state: {from: this.props.location}}}/>}
+									/>
 									<Route path="*"	render={() => <NotFound /> } />
 								</Switch>
 							</div>
@@ -86,7 +107,7 @@ export default class Main extends React.Component {
 // Route guard functions
 const PrivateRoute = ({component: Component, authed, path, ...rest}) => {
 	return (
-		<Route exact {...rest} path={path} render={(props) => authed ? <Component {...rest} /> :
+		<Route exact {...rest} path={path} render={(props) => authed ? <Component  {...rest} /> :
 			<Redirect to={{pathname: '/login', state: {from: props.location}}}/>}
 		/>
 	)
