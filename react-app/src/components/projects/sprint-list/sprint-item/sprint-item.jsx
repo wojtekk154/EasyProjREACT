@@ -31,7 +31,7 @@ export default class SprintItem extends React.Component {
 						</span>
 					</div>
 						<div className={`SprintItem-element-badge SprintItem-element-badge-${sprintItem.status}`}>
-							{conf.WorkStatusNames[sprintItem.status]}
+							{conf.statusProject[sprintItem.status]}
 						</div>
 				</div>
 			</div>

@@ -57,7 +57,7 @@ export default class TaskForm extends React.Component {
 								value={this.state.name}
 								inputType={'text'}
 								min={5}
-								max={30}
+								max={50}
 								onChangeValue={this.handleValue}
 								required={true}
 							/>
@@ -133,8 +133,6 @@ export default class TaskForm extends React.Component {
 								fieldlName={'estimate'}
 								value={this.state.estimate}
 								inputType={'text'}
-								min={2}
-								max={10}
 								inputPattern={/^[0-9]{0,3}[h]{0,1}$|^[0-9]{0,2}[m]{0,1}$|^[0-9]{0,3}[h]{0,1}\s?[0-9]{0,2}[m]{0,1}$/i}
 								onChangeValue={this.handleValue}
 								required={false}
@@ -146,9 +144,7 @@ export default class TaskForm extends React.Component {
 								fieldlName={'worked'}
 								value={this.state.worked}
 								inputType={'text'}
-								min={2}
-								max={10}
-								inputPattern={/^[0-9]{0,3}[h]{0,1}$|^[0-9]{0,2}[m]{0,1}$|^[0-9]{0,3}[h]{0,1}\s?[0-9]{0,2}[m]{0,1}$/i}
+								inputPattern={/^([0-9]{0,3}[h]{0,1}$|^[0-9]{0,2}[m]{0,1})$|^([0-9]{0,3}[h]{0,1}\s?[0-9]{0,2}[m]{0,1})$/i}
 								onChangeValue={this.handleValue}
 								required={false}
 							/>

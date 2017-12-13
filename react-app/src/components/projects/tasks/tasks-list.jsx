@@ -78,11 +78,11 @@ export default class TasksList extends Component {
 // sort components
 const SortableItem = SortableElement(({value}) =>
 	<li>
-		<span className={conf.kindClassName[value.kind]}>
-			<FontAwesome name={conf.kindIco[value.kind]}/>
+		<span className={conf.kindClass[value.kind]}>
+			<FontAwesome name={conf.kindIcon[value.kind]}/>
 		</span>
-		<span className={conf.priorityClassName[value.priority]}>
-			<FontAwesome name={conf.priorityIco[value.priority]} />
+		<span className={conf.priorityClass[value.priority]}>
+			<FontAwesome name={conf.priorityIcon[value.priority]} />
 		</span>
 		<span className="title">{value.name}</span>
 		<span className="estimation">

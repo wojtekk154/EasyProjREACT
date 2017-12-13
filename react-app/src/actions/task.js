@@ -93,7 +93,6 @@ export const fetchTasksUpdate = (params, token) =>{
 					return response
 				})
 				.then(response => {
-					console.log(response);
 				});
 		} catch (e) {
 			dispatch(errorTask(true));
@@ -132,3 +131,4 @@ export const fetchTasksRemove = (params, token) =>{
 
 	}
 };
+

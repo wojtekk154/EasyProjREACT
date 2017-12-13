@@ -24,31 +24,31 @@ export default class SelectElement extends React.Component {
 	}
 
 	renderAnswers(item, index, fieldlName) {
-		if (fieldlName === "status" && this.props.answers.length === 3) {
-			return (
-				<option key={index + 1} value={item}>{conf.WorkStatusNames[item]}</option>
-			);
-		} else if (fieldlName === "status" && this.props.answers.length === 5) {
-			return (
-				<option key={index + 1} value={item}>{conf.TaskStatusNames[item]}</option>
-			);
-		} else if (fieldlName === "priority") {
-			return (
-				<option key={index + 1} value={item}>{conf.WorkStatusNames[item]}</option>
-			);
-		} else if (fieldlName === "kind") {
-			return (
-				<option key={index + 1} value={item}>
-					<span className={conf.kindClassName[item]}>
-						 {kindIcoUnicode(item)} {conf.kindName[item]}
-					</span>
-				</option>
-			);
-		} else if (fieldlName === "assigned") {
-			return (
-				<option key={index + 1} value={item}> {item}</option>
-			);
-		}
+		// if (fieldlName === "status" && this.props.answers.length === 3) {
+		// 	return (
+		// 		<option key={index + 1} value={item}>{conf.WorkStatusNames[item]}</option>
+		// 	);
+		// } else if (fieldlName === "status" && this.props.answers.length === 5) {
+		// 	return (
+		// 		<option key={index + 1} value={item}>{conf.TaskStatusNames[item]}</option>
+		// 	);
+		// } else if (fieldlName === "priority") {
+		// 	return (
+		// 		<option key={index + 1} value={item}>{conf.WorkStatusNames[item]}</option>
+		// 	);
+		// } else if (fieldlName === "kind") {
+		// 	return (
+		// 		<option key={index + 1} value={item}>
+		// 			<span className={conf.kindClassName[item]}>
+		// 				 {kindIcoUnicode(item)} {conf.kindName[item]}
+		// 			</span>
+		// 		</option>
+		// 	);
+		// } else if (fieldlName === "assigned") {
+		// 	return (
+		// 		<option key={index + 1} value={item}> {item}</option>
+		// 	);
+		// }
 	}
 
 	render() {

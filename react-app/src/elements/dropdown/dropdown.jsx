@@ -10,7 +10,7 @@ var FontAwesome = require('react-fontawesome');
 export default class DropDown extends React.Component {
 	constructor(props) {
 		super(props);
-
+		this.state = {};
 		this.openDialog = this.openDialog.bind(this);
 	}
 
@@ -31,6 +31,7 @@ export default class DropDown extends React.Component {
 		e.preventDefault();
 		this.props.onChangeValue({name: this.props.fieldName, value: param});
 		document.querySelector(`#myDropDown-${this.props.fieldName}`).classList.toggle("show");
+		this.clearError.call(this)
 	}
 
 	filterFunction(e) {
@@ -54,9 +55,9 @@ export default class DropDown extends React.Component {
 	renderChoosenAnswer(fieldName, item) {
 		switch (fieldName) {
 			case 'status':
-				return this.props.answers.length === 5 ? conf.TaskStatusNames[item] : conf.WorkStatusNames[item];
+				return this.props.answers.length === 5 ? conf.statusTask[item] : conf.statusProject[item];
 			case 'priority':
-				return conf.priorityClassName[item];
+				return conf.priorityClass[item];
 			case 'kind': return conf.kindName[item];
 		}
 	}
@@ -64,7 +65,7 @@ export default class DropDown extends React.Component {
 	renderAnswersStatusTask(item, index) {
 		return (
 			<span key={`status-${index}`} onClick={(e) => this.handleSelect.call(this, e, item)}>
-				{conf.TaskStatusNames[item]}
+				{conf.statusTask[item]}
 			</span>
 		);
 	}
@@ -72,7 +73,7 @@ export default class DropDown extends React.Component {
 	renderAnswersStatusProject(item, index) {
 		return (
 			<span key={`status-${index}`} onClick={(e) => this.handleSelect.call(this, e, item)}>
-				{conf.WorkStatusNames[item]}
+				{conf.statusProject[item]}
 			</span>
 		);
 	}
@@ -84,10 +85,35 @@ export default class DropDown extends React.Component {
 		};
 		return (
 			<span key={`priority-${index}`} onClick={(e) => this.handleSelect.call(this, e, item)}>
-				<FontAwesome name={conf.priorityIco[item]} style={styleFont}/>
-				{conf.priorityClassName[item]}
+				<FontAwesome name={conf.priorityIcon[item]} style={styleFont}/>
+				{conf.priorityName[item]}
 			</span>
 		);
+	}
+
+	setErrorState(message) {
+		this.setState({
+			hasError: true,
+			errorMessage: message
+		});
+	}
+
+	clearError() {
+		console.log("FUPAAA");
+		this.setState({
+			hasError: false,
+			errorMessage: ''
+		});
+	}
+
+	validateField(e) {
+		e.preventDefault();
+
+		if (this.props.required && e.nativeEvent.target.value.length === 0) {
+			this.setErrorState.call(this, `${conf.errorMessages.required} ${this.props.fieldName}!`);
+		} else {
+			this.clearError.call(this);
+		}
 	}
 
 	renderAnswersKind(item, index) {
@@ -96,8 +122,8 @@ export default class DropDown extends React.Component {
 			color: conf.kindColor[item]
 		};
 		return (
-			<span key={`kind-${index}`} onClick={(e) => this.handleSelect.call(this, e, item)}>
-				<FontAwesome name={conf.kindIco[item]} style={styleFont}/>
+			<span key={`kind-${index}`} onClick={(e) => { this.handleSelect.call(this, e, item) }}>
+				<FontAwesome name={conf.kindIcon[item]} style={styleFont}/>
 				{conf.kindName[item]}
 			</span>
 		);
@@ -112,12 +138,14 @@ export default class DropDown extends React.Component {
 						name={this.props.fieldName}
 						value={this.renderChoosenAnswer(this.props.fieldName, this.props.value) || ""}
 						onClick={this.openDialog.bind(this)}
+						onBlur={(e) => this.validateField.call(this, e)}
 						required={this.props.required}
 					/>
 					<FontAwesome name={'caret-down'} className={'DropDown-carret'}/>
 					<span className="highlight"></span>
 					<span className="bar"></span>
 					<label>{this.props.labelName}</label>
+					<small>{this.state.hasError ? this.state.errorMessage : null}</small>
 				</div>
 
 				<div id={`myDropDown-${this.props.fieldName}`} className="DropDown-content">

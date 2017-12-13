@@ -1,6 +1,7 @@
 //login
 import * as actions from "./action.types";
 import * as layout from './layout';
+import * as conf from '../config';
 
 export const loginSuccess = (data) => {
 	return {
@@ -52,7 +53,7 @@ export const registerError = (data) => {
 export const fetchLoginUser = (data) => {
 	return (dispatch) => {
 		try {
-			fetch('http://localhost:1337/auth/sign_in', {
+			fetch(`${conf.apiBaseUrl}/auth/sign_in`, {
 				method: 'post',
 				headers: {'Content-Type': 'application/json'},
 				body: JSON.stringify({
@@ -80,7 +81,7 @@ export const fetchLoginUser = (data) => {
 export const fetchRegisterNewUser = (data) => {
 	return (dispatch) => {
 		try {
-			fetch('http://localhost:1337/auth/sign_up', {
+			fetch(`${conf.apiBaseUrl}/auth/sign_up`, {
 				method: 'post',
 				headers: {'Content-Type': 'application/json'},
 				body: JSON.stringify({

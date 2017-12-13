@@ -14,14 +14,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev')); //logs in console
 
-app.use('/auth', require('./app/routes/auth.routes'));
+app.use('/api/auth', require('./app/routes/auth.routes'));
 // app.use('*', authController.checkToken);
 
-app.use('/projects', require('./app/routes/project.routes'));
-app.use('/sprints', require('./app/routes/sprint.routes'));
-app.use('/tasks', require('./app/routes/task.routes'));
+app.use('/api/projects', require('./app/routes/project.routes'));
+app.use('/api/sprints', require('./app/routes/sprint.routes'));
+app.use('/api/tasks', require('./app/routes/task.routes'));
 
 // seeds if db is empty
+// app.get('/projects', (req, res) => {
+//     res.sendfile('./public/index.html');
+// });
 
 app.listen(port);
 
