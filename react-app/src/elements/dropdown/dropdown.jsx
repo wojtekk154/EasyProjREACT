@@ -10,8 +10,10 @@ export default class DropDown extends React.Component {
 		super(props);
 		this.state = {
 			listVisible: false,
-			display: ''
+			display: '',
+			focus: false
 		};
+		console.log(this.props);
 	}
 
 	componentDidMount() {
@@ -27,7 +29,7 @@ export default class DropDown extends React.Component {
 	show() {
 		this.setState({listVisible: true});
 		document.addEventListener("click", this.hide.bind(this), true);
-		document.querySelector('.DropDown-container-display').focus();
+		document.querySelector('.DropDown-container-display .clicked').focus();
 	}
 
 	hide() {
@@ -36,32 +38,27 @@ export default class DropDown extends React.Component {
 	}
 
 
-	renderListItem() {
-
+	renderListItem(item, index) {
+		return (
+			<li key={index} onClick={e => console.log(e)}>
+				<span>Test {item}</span>
+			</li>
+		);
 	}
 
 	render() {
 		return (
 			<div className={"DropDown"}>
 				<div className={"DropDown-container" + (this.state.listVisible ? " show" : "")}>
-					<div className='InputElement'>
-						<button
-							name={this.props.fieldlName}
-							id={this.props.fieldlName}
-							onClick={this.show.bind(this)}
-							// onBlur={(e) => this.validateField.call(this, e)}
-							required={this.props.required}
-						> {this.props.value || "sadasdsa"}
-							<FontAwesome name={'angle-down'} className="caret"/></button>
-						<span className="InputElement-highlight"></span>
-						<span className="InputElement-bar"></span>
-						<label>{this.props.labelName}</label>
-						<small>{this.state.hasError ? this.state.errorMessage : null}</small>
+					<div className={"DropDown-container-display" + (this.state.listVisible ? " clicked" : "")}
+						 onClick={this.show.bind(this)} onBlur={(e) => console.log('dddddd dddd')}>
+						{this.state.focus ? "none" : "dupa"}
+
 					</div>
 					<div className={'dropdown-list'}>
-						<div>
-							dsadasdasdsa
-						</div>
+						<ul>
+							{this.props.answers.map((item, index) => this.renderListItem.call(this, item, index))}
+						</ul>
 					</div>
 				</div>
 			</div>
