@@ -45,7 +45,7 @@ export default class ProjectItem extends React.Component {
 					</Link>
 
 					<span className={`status-badge status-badge-${item.status}`}>
-						{conf.WorkStatusNames[item.status]}
+						{conf.statusProject.name[item.status]}
 					</span>
 				</small>
 			</div>

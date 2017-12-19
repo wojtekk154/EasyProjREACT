@@ -20,6 +20,8 @@ app.use('/api/auth', require('./app/routes/auth.routes'));
 app.use('/api/projects', require('./app/routes/project.routes'));
 app.use('/api/sprints', require('./app/routes/sprint.routes'));
 app.use('/api/tasks', require('./app/routes/task.routes'));
+app.use('/api/users', require('./app/routes/user.routes'));
+
 
 // seeds if db is empty
 // app.get('/projects', (req, res) => {

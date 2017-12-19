@@ -11,15 +11,19 @@ export default class DropDown extends React.Component {
 		this.state = {
 			listVisible: false,
 			display: '',
-			focus: false
+			value: null
 		};
-		console.log(this.props);
 	}
 
 	componentDidMount() {
 		// if (!this.props.searchInput) {
 		// 	document.querySelector(`#myInput-${this.props.fieldName}`).style.display = 'none';
 		// }
+	}
+
+	filterInput(e) {
+		e.preventDefault();
+		console.log(e)
 	}
 
 	select(item) {
@@ -29,7 +33,6 @@ export default class DropDown extends React.Component {
 	show() {
 		this.setState({listVisible: true});
 		document.addEventListener("click", this.hide.bind(this), true);
-		document.querySelector('.DropDown-container-display .clicked').focus();
 	}
 
 	hide() {
@@ -37,26 +40,65 @@ export default class DropDown extends React.Component {
 		document.removeEventListener("click", this.hide.bind(this), true);
 	}
 
+	returnIcon(item, color) {
+		const style = {
+			color: color,
+			padding: '0 1em'
+		};
+		return <FontAwesome name={item} style={style}/>;
+	}
+
+	returnImage(image) {
+		return <img src={image} width="40px" height="40px"/>
+	}
+
+	chooseAnswer(item) {
+		this.setState({ value: item });
+		this.props.choosenAnswer(item);
+	}
 
 	renderListItem(item, index) {
 		return (
-			<li key={index} onClick={e => console.log(e)}>
-				<span>Test {item}</span>
+			<li key={index} onClick={ e => this.chooseAnswer.call(this, item)}>
+				{item.icon ? this.returnIcon(item.icon, item.color) : (item.image ? this.returnImage(image): null) }
+				{item.name}
 			</li>
 		);
 	}
 
+	ret
+
+
 	render() {
+		const searchStyle =  {
+			display: this.props.searchInput ? 'block' : 'none'
+		};
+
 		return (
 			<div className={"DropDown"}>
 				<div className={"DropDown-container" + (this.state.listVisible ? " show" : "")}>
 					<div className={"DropDown-container-display" + (this.state.listVisible ? " clicked" : "")}
-						 onClick={this.show.bind(this)} onBlur={(e) => console.log('dddddd dddd')}>
-						{this.state.focus ? "none" : "dupa"}
-
+						 onClick={this.show.bind(this)}>
+						{
+							this.state.value ?
+								(this.state.value.icon ?
+									this.returnIcon(this.state.value.icon, this.state.value.color) :
+									(this.state.value.image ?
+										this.returnImage(this.state.value.image):
+										null)) :
+							null
+						}
+						{this.state.value ? this.state.value.name : this.props.labelName}
 					</div>
 					<div className={'dropdown-list'}>
 						<ul>
+							<li style={searchStyle}>
+								<input type="text"
+									   onKeyUp={this.filterInput.bind(this)}
+									   onClick={this.show.bind(this)}
+									   placeholder="Search"
+								/>
+							</li>
 							{this.props.answers.map((item, index) => this.renderListItem.call(this, item, index))}
 						</ul>
 					</div>
@@ -66,31 +108,4 @@ export default class DropDown extends React.Component {
 	}
 }
 
-//
-//
-//
-//
-// filterFunction(e) {
-// 	e.preventDefault();
-// }
-//
-//
-//
-//
-// clearError() {
-// 	console.log("FUPAAA");
-// 	this.setState({
-// 		hasError: false,
-// 		errorMessage: ''
-// 	});
-// }
-//
-// validateField(e) {
-// 	e.preventDefault();
-//
-// 	if (this.props.required && e.nativeEvent.target.value.length === 0) {
-// 		this.setErrorState.call(this, `${conf.errorMessages.required} ${this.props.fieldName}!`);
-// 	} else {
-// 		this.clearError.call(this);
-// 	}
-// }
+// this.setState({ value: item })

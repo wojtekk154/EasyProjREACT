@@ -25,5 +25,9 @@ module.exports = mongoose.model('Project', new Schema({
     },
     backlog: [{type: Schema.Types.ObjectId, ref: 'Task'}],
     sprints: [{type: Schema.Types.ObjectId, ref: 'Sprint'}],
-    cooperators: [{type: Schema.Types.ObjectId, ref: 'User'}]
+    cooperators: [{
+        email: { type: String, required: true },
+        image: { type: String, required: true },
+        id: {type: Schema.Types.ObjectId, ref: 'User'}
+    }]
 }));

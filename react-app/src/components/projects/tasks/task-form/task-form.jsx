@@ -4,12 +4,14 @@ import React from 'react';
 // Elements
 import InputElement from '../../../../elements/input/input-element';
 import TextAreaElement from '../../../../elements/input/textarea-element';
-import SelectElement from '../../../../elements/select/select-element';
 import DropDown from '../../../../elements/dropdown/dropdown';
 
+import * as conf from '../../../../config';
 // Style
 import './task-form.scss';
+import {kind} from "../../../../config";
 
+let kindAnswers, priorityAnswers, statusAnswers = [];
 
 export default class TaskForm extends React.Component {
 	constructor(props) {
@@ -17,6 +19,17 @@ export default class TaskForm extends React.Component {
 		this.state = {
 			formErrors: {}
 		};
+
+		kindAnswers = [];
+		priorityAnswers = [];
+		statusAnswers = [];
+
+		for(let i=1; i <= 5; i++) {
+			kindAnswers.push({icon: conf.kind.icon[i], name: conf.kind.name[i], color: conf.kind.color[i], value: i });
+			priorityAnswers.push({icon: conf.priority.icon[i], name: conf.priority.name[i], color: conf.priority.color[i], value: i });
+			statusAnswers.push({name: conf.statusTask.name[i], color: conf.statusTask.color[i], value: i });
+		}
+
 		this.submitTask = this.submitTask.bind(this);
 		this.handleValue = this.handleValue.bind(this);
 		this.handleDropDown = this.handleDropDown.bind(this);
@@ -29,12 +42,12 @@ export default class TaskForm extends React.Component {
 		});
 	}
 
-
-
 	submitTask(e) {
 		e.preventDefault();
+		// let data = this.state;
+		// delete data.formErrors;
+		// console.log(data)
 		this.props.fetchTaskCreate(this.state, this.props.user.access_token);
-		console.log(this.state);
 	}
 
 	handleValue(e) {
@@ -82,7 +95,8 @@ export default class TaskForm extends React.Component {
 								labelName={'Priority'}
 								fieldName={'priority'}
 								value={this.state.priority}
-								answers={[1, 2, 3, 4, 5]}
+								answers={priorityAnswers}
+								choosenAnswer={(item)=>{this.setState({ priority: item.value })}}
 								onChangeValue={this.handleDropDown}
 								searchInput={false}
 								required={true}
@@ -93,7 +107,8 @@ export default class TaskForm extends React.Component {
 								labelName={'Kind'}
 								fieldName={'kind'}
 								value={this.state.kind}
-								answers={[1, 2, 3, 4, 5]}
+								answers={kindAnswers}
+								choosenAnswer={(item)=>{this.setState({ kind: item.value })}}
 								onChangeValue={this.handleDropDown}
 								searchInput={false}
 								required={true}
@@ -107,7 +122,8 @@ export default class TaskForm extends React.Component {
 								labelName={'Assigned to'}
 								fieldName={'assigned'}
 								value={this.state.assigned}
-								answers={['a', 'b']}
+								answers={['a', 'bas']}
+								choosenAnswer={(item)=>{this.setState({ assigned: item.value })}}
 								onChangeValue={this.handleDropDown}
 								searchInput={true}
 								required={false}
@@ -118,7 +134,8 @@ export default class TaskForm extends React.Component {
 								labelName={'Status'}
 								fieldName={'status'}
 								value={this.state.status}
-								answers={[1, 2, 3, 4, 5]}
+								answers={statusAnswers}
+								choosenAnswer={(item)=>{this.setState({ assigned: item.value })}}
 								onChangeValue={this.handleDropDown}
 								searchInput={false}
 								required={false}
@@ -168,9 +185,7 @@ export default class TaskForm extends React.Component {
 
 
 
-/*
-
-name: req.body.name,
+/*		name: req.body.name,
         description: req.body.description,
         priority: req.body.priority,
         index: req.body.index ? req.body.index : null,
@@ -180,7 +195,4 @@ name: req.body.name,
         status: req.body.status ? req.body.status : null,
         estimate: req.body.estimate ? req.body.estimate : null,
         worked: req.body.worked ? req.body.worked : null,
-        kind: req.body.kind ? req.body.kind : null
-
-
- */
+        kind: req.body.kind ? req.body.kind : null		*/

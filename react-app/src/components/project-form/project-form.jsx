@@ -17,7 +17,11 @@ export default class ProjectForm extends React.Component {
 	componentDidMount() {
 		this.setState({
 			owner: this.props.user.id,
-			cooperator: this.props.user.id,
+			cooperator: {
+				email:props.user.email,
+				image:props.user.id,
+				id: props.user.id
+			},
 			owner_name: this.props.user.username
 		});
 	}
@@ -78,13 +82,7 @@ export default class ProjectForm extends React.Component {
 							</div>
 							<div className="column-second">
 
-								<SelectElement
-									labelName={'Status'}
-									fieldName={'status'}
-									value={this.state.status}
-									answers={[1, 2, 3]}
-									onChangeValue={this.handleChangeValue}
-								/>
+
 							</div>
 						</div>
 						<input type='submit' className="ProjectForm-submit-button"/>
