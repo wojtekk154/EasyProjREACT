@@ -23,6 +23,7 @@ exports.getSprint = (req, res) => {
 
 
 exports.createSprint = (req, res) => {
+    console.log(req.body);
     let sprint = new Sprint({
         name: req.body.name,
         description: req.body.description,

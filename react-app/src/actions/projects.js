@@ -64,10 +64,10 @@ export const getProjects = (user, token) => {
 				.then((response) => {
 					return response.json();
 				})
-				.then(response => {
+				.then((response) => {
 					return response
 				})
-				.then(projects => {
+				.then((projects) => {
 					dispatch(loadingProjects(false));
 					dispatch(revicedProjects(projects));
 				});

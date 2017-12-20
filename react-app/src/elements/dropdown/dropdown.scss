@@ -1,10 +1,16 @@
 .DropDown {
+    label {
+        top: -20px;
+        font-size: 14px;
+        color: #5264ae;
+    }
+
     &-container {
         float: left;
         display: block;
         width: 250px;
         height: 3em;
-        margin-top: 20px;
+        margin-top: 5px;
 
 
         &.show {

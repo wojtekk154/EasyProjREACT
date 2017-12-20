@@ -11,7 +11,8 @@ import SprintForm from "../spint-form/sprint-form";
 export default class SprintList extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {...props};
+		this.state = {};
+		console.log(this.props);
 
 	}
 

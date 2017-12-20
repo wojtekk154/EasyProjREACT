@@ -76,7 +76,9 @@ export default class DropDown extends React.Component {
 
 		return (
 			<div className={"DropDown"}>
+				<label>{this.props.labelName}</label>
 				<div className={"DropDown-container" + (this.state.listVisible ? " show" : "")}>
+
 					<div className={"DropDown-container-display" + (this.state.listVisible ? " clicked" : "")}
 						 onClick={this.show.bind(this)}>
 						{
@@ -107,5 +109,3 @@ export default class DropDown extends React.Component {
 		)
 	}
 }
-
-// this.setState({ value: item })

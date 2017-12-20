@@ -9,8 +9,8 @@ exports.queryProjects = (req, res) => {
     Project.find({}, (err, projects) => {
         if (err) return res.status(404).send('Not Fount');
         let projs = [];
-        projs = projects.filter(pro => pro.cooperators.indexOf(req.query.user) !== -1);
-        res.json(projs);
+
+        res.json(projects.filter(pro => pro.cooperators.find((object) => {return object.id === req.query.user}) !== -1));
     })
 }
 

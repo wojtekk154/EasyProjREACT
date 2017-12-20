@@ -2,9 +2,13 @@ import React from 'react';
 
 import InputElement from '../../elements/input/input-element';
 import TextAreaElement from '../../elements/input/textarea-element';
-import SelectElement from '../../elements/select/select-element'
+import DropDown from '../../elements/dropdown/dropdown';
+
+import * as conf from '../../config';
 
 import './project-form.scss';
+
+let statusAnswers = [];
 
 export default class ProjectForm extends React.Component {
 	constructor(props) {
@@ -18,36 +22,41 @@ export default class ProjectForm extends React.Component {
 		this.setState({
 			owner: this.props.user.id,
 			cooperator: {
-				email:props.user.email,
-				image:props.user.id,
-				id: props.user.id
+				email: this.props.user.email,
+				image: this.props.user.id,
+				id:  this.props.user.id
 			},
 			owner_name: this.props.user.username
 		});
+		statusAnswers = [];
+		for(let i = 1; i <= 3; i++) {
+			statusAnswers.push({name: conf.statusProject.name[i], color: conf.statusProject.color[i], value: i });
+		}
 	}
 
 	handleSubmit(e) {
 		e.preventDefault();
 
 		this.props.addProject(this.state, this.props.user['access_token']);
+		this.resetForm.bind(this);
+		let modal = document.querySelector(`#myModal-${this.props.className}`);
+		modal.style.display = "none";
+	}
 
+	resetForm() {
 		this.setState({
 			name: '',
 			description: '',
 			project_key: '',
 			status: ''
 		});
-
-		let modal = document.querySelector('#myModal');
-		modal.style.display = "none";
 	}
-
-
 	handleChangeValue(e) {
 		this.setState({ [e.target['name']]: e.target.value });
 	}
 
 	render() {
+		console.log(this.state);
 		return (
 			<div>
 				<div className="body">
@@ -81,7 +90,16 @@ export default class ProjectForm extends React.Component {
 									onChangeValue={this.handleChangeValue}/>
 							</div>
 							<div className="column-second">
-
+								<DropDown
+									labelName={'Status'}
+									fieldName={'status'}
+									value={this.state.status}
+									answers={statusAnswers}
+									choosenAnswer={(item)=>{this.setState({ status: item.value })}}
+									onChangeValue={this.handleDropDown}
+									searchInput={false}
+									required={false}
+								/>
 
 							</div>
 						</div>

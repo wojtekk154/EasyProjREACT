@@ -66,6 +66,7 @@ export const fetchSprints = (params, token) => {
 	}
 };
 export const fetchSprintCreate = (params, token) =>{
+	console.log(params);
 	const tokenHeaders = {'Content-Type': 'application/json', 'access-token': `${token}`};
 	return (dispatch) => {
 		try {

@@ -1,28 +1,34 @@
 import React from 'react';
 import InputElement from '../../../elements/input/input-element';
 import TextAreaElement from '../../../elements/input/textarea-element';
-import SelectElement from '../../../elements/select/select-element';
-
+import DropDown from '../../../elements/dropdown/dropdown';
 import './spirnt-form.scss';
+
+import * as conf from '../../../config';
+let statusAnswers = [];
 
 export default class SprintForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
-
+		statusAnswers = [];
+		for(let i = 1; i <= 3; i++) {
+			statusAnswers.push({name: conf.statusProject.name[i], color: conf.statusProject.color[i], value: i });
+		}
 		this.submitSprint = this.submitSprint.bind(this);
 		this.handleChangeValue = this.handleChangeValue.bind(this);
 	}
 
 	componentDidMount() {
 		this.setState({
-			project_id: this.props.projectId
+			project: this.props.projectId
 		});
 	}
 
 	submitSprint(e) {
 		e.preventDefault();
-		this.props.createSprint(this.state, this.props.token);
+		console.log(this.state);
+		this.props.create(this.state, this.props.token);
 	}
 
 	handleChangeValue(e) {
@@ -63,7 +69,10 @@ export default class SprintForm extends React.Component {
 								fieldlName={'start_date'}
 								value={this.state['start_date']}
 								inputType={'date'}
-								onChangeValue={this.handleChangeValue}
+								onChangeValue={(e)=>{
+									const date = new Date(e.target.value);
+									this.setState({[e.target['name']]: `${date.getMonth()}-${date.getDate()}-${date.getFullYear()}`});
+								}}
 							/>
 						</div>
 						<div className="column-second">
@@ -72,19 +81,25 @@ export default class SprintForm extends React.Component {
 								fieldlName={'end_date'}
 								value={this.state['end_date']}
 								inputType={'date'}
-								onChangeValue={this.handleChangeValue}
+								onChangeValue={(e)=>{
+									const date = new Date(e.target.value);
+									this.setState({[e.target['name']]: `${date.getMonth()}-${date.getDate()}-${date.getFullYear()}`});
+								}}
 							/>
 						</div>
 					</div>
 					<div className="row-double-columns">
 						<div className="column-first">
-							<SelectElement
+							<DropDown
 								labelName={'Status'}
 								fieldName={'status'}
 								value={this.state.status}
-								answers={[1, 2, 3]}
-								onChangeValue={this.handleChangeValue}
+								answers={statusAnswers}
+								choosenAnswer={(item) => {
+									this.setState({status: item.value})
+								}}
 							/>
+
 						</div>
 						<div className="column-second">
 						</div>

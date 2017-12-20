@@ -26,7 +26,7 @@ export default class Project extends Component {
 			<div className="Project">
 				<div className="row-full-width">
 					<div className="column-full-width Project-container-shadow">
-							<SprintList sprints={this.props.sprints.sprints} projectId={this.props.id}/>
+							<SprintList sprints={this.props.sprints.sprints} projectId={this.props.id} create={this.props.fetchSprintCreate}/>
 
 					</div>
 				</div>
