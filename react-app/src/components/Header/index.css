@@ -1,0 +1,26 @@
+.header {
+    width: 100%;
+    height: 60px;
+    background: dodgerblue;
+}
+
+.header .brand-name {
+    margin: auto 20px;
+    font-size: 20px;
+    line-height: 60px;
+    vertical-align: middle;
+    float: left;
+}
+
+.header .app-menu {
+    display: inline-block;
+    list-style-type: none;
+    text-align: right;
+}
+
+.header .app-menu li {
+    height: 100%;
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
