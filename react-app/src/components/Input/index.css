@@ -1,0 +1,45 @@
+.input-field  {
+    background: white;
+    opacity: .5;
+    height: 70px;
+    margin: 10px;
+    border-radius: 4px;
+    z-index: 200;
+    overflow: hidden;
+    border-bottom: 1px solid darkblue;
+}
+
+label {
+    display: block;
+    margin: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px;
+}
+input {
+    width: 100%;
+    padding: 6px;
+    margin: 0 5px;
+    border: 0;
+    font-size: 12pt;
+    box-sizing: border-box;
+    outline: none;
+}
+
+div.input-field:focus-within {
+    border-bottom: 3px solid deepskyblue;
+}
+
+div.input-field:focus-within > label {
+    color: deepskyblue;
+    font-weight: 600;
+}
+
+label::after {
+    display: block;
+    content: attr(title);
+    font-weight: bold;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}

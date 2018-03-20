@@ -1,4 +1,42 @@
 .container {
-    max-width: 1024px;
-    margin: auto;
+    width: 100%;
+    margin: 0;
+    position: relative;
+    min-height: 93vh;
+}
+
+.container aside.sidebar-menu {
+    display: block;
+    position: fixed;
+    width: 50px;
+    top: 60px;
+    left: 0;
+    height: 100%;
+    background: #696969;
+    -webkit-transition: width 2s;
+    -o-transition: width 2s;
+    transition: width 2s;
+}
+
+.container aside.sidebar-menu.visible {
+    width: 200px;
+    -webkit-transition: width 2s;
+    -o-transition: width 2s;
+    transition: width 2s;
+}
+.container section.main-container {
+    display: block;
+    position: absolute;
+    right: 0;
+    width: calc(100% - 55px);
+    height: 100%;
+    -webkit-transition: width 2s;
+    -o-transition: width 2s;
+    transition: width 2s;
+}
+ aside.visible ~  section.main-container {
+    width: calc(100% - 205px);
+     -webkit-transition: width 2s;
+     -o-transition: width 2s;
+     transition: width 2s;
 }

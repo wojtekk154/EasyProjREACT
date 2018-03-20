@@ -1,32 +1,25 @@
-import REGISTER_USER_URL from '../../utils/constats';
+import AuthService from '../../Services/AuthService';
+import {loadingAction} from '../Common';
+
+const authenticationService = new AuthService();
 
 export function registerNewUserSuccessAction() {
-    return {
-
-    }
+    return {}
 }
 
 export function registerNewUserFaliureAction() {
-    return {
-
-    }
+    return {}
 }
 
 export function registerNewUserLoadingAction(value) {
-    return {
-
-    }
+    return {}
 }
 
 export const registerNewUserAction = (credentials) => {
     return dispatch => {
-        fetch(REGISTER_USER_URL, {
-            body: JSON.stringify(credentials),
-            method: 'POST'
-        })
-            .then(resp => resp.json())
-            .then(data => {
-
-            })
+        dispatch(loadingAction());
+        console.log(credentials);
+        authenticationService.signUpNewUser(credentials)
+            .then(e => console.log(e))
     };
 };

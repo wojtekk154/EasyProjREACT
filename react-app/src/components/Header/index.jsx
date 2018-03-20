@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import MaterialIcon from 'material-icons-react';
 
@@ -11,7 +11,7 @@ const Header = ({brand}) => {
                 {brand}
             </div>
             <ul className="app-menu">
-                <li>
+                <li className="active">
                     <Link to="/" className="app-link"><MaterialIcon ico="home"/>Home1</Link>
                 </li>
                 <li>

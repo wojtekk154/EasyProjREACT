@@ -15,12 +15,32 @@
 .header .app-menu {
     display: inline-block;
     list-style-type: none;
-    text-align: right;
+    float: right;
+    height: 100%;
+    margin: 0 10px;
 }
 
 .header .app-menu li {
     height: 100%;
     display: inline-block;
     width: 100px;
-    text-align: right;
+    text-align: center;
+    line-height: 60px;
+    vertical-align: middle;
+    padding: 0;
+}
+
+.header .app-menu li a {
+    text-decoration: none;
+    font-weight: normal;
+    color: aliceblue;
+}
+
+.header .app-menu li:hover a {
+    color: deepskyblue;
+    font-weight: 600;
+}
+
+.header .app-menu li.active a {
+    text-decoration: underline;
 }
