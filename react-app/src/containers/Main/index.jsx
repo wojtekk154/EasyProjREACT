@@ -7,7 +7,7 @@ import Home from '../Home';
 import NotFound from '../../components/NotFound';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import SignUp from '../SignUp';
+import SignUp from '../Auth/SignUp';
 import {ActionCreators} from "../../actions/index";
 
 import './style.css';

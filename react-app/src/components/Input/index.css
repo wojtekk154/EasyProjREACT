@@ -16,6 +16,7 @@ label {
     font-weight: 500;
     padding: 5px;
 }
+
 input {
     width: 100%;
     padding: 6px;
@@ -24,15 +25,6 @@ input {
     font-size: 12pt;
     box-sizing: border-box;
     outline: none;
-}
-
-div.input-field:focus-within {
-    border-bottom: 3px solid deepskyblue;
-}
-
-div.input-field:focus-within > label {
-    color: deepskyblue;
-    font-weight: 600;
 }
 
 label::after {

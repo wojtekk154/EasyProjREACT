@@ -1,41 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import './index.css';
 
-function Input(props) {
+function Input({input, label, type, meta: {touched, error}}) {
     return (
         <div>
-            <div title={props.label} className="input-field">
-                <label title={props.label}>{props.label}</label>
-                <input
-                    className={props.styling}
-                    name={props.name}
-                    type={props.type}
-                    placeholder={props.placeholder}
-                    value={props.value}
-                    onChange={props.onInputChange}
-                />
+            {label}
+            <div className="input-field">
+                <label>{label}</label>
+                <input {...input} placeholder={label} type={type}/>
             </div>
-            <span>
-                {!!props.error && props.error}
-            </span>
+            {touched && error && <span>{error}</span>}
         </div>
     );
 }
 
 Input.propTypes = {
-    label: PropTypes.string.isRequired,
-    styling: PropTypes.string,
-    placeholder: PropTypes.string.isRequired,
-    value: PropTypes.string,
-    error: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    onInputChange: PropTypes.func
+    label: PropTypes.string.isRequired
 };
 
 Input.defaultProps = {
-    type: 'text',
-    styling: 'primary'
+    type: 'text'
 };
 
 export default Input;
