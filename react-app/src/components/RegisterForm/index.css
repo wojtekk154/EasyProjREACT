@@ -1,4 +1,4 @@
-.input-field  {
+.input-field {
     background: white;
     opacity: .5;
     height: 70px;
@@ -6,7 +6,12 @@
     border-radius: 4px;
     z-index: 200;
     overflow: hidden;
-    border-bottom: 1px solid deepskyblue;
+    border-bottom: 1px solid darkblue;
+    box-shadow: dimgrey 0px 2px 3px;
+}
+
+div.error {
+    border-bottom: 2px solid red;
 }
 
 div.input-field > label {
@@ -17,11 +22,12 @@ div.input-field > label {
     padding: 5px;
     color: black;
 }
+
 div.input-field > input {
     width: 100%;
     padding: 6px;
     margin: 0 5px;
-    border: 0;
+    border: none;
     font-size: 12pt;
     box-sizing: border-box;
     outline: none;
@@ -43,4 +49,19 @@ div.input-field > label::after {
     height: 0;
     overflow: hidden;
     visibility: hidden;
+}
+
+div.submit-container {
+    width: 100%;
+    margin: 10px;
+    overflow: hidden;
+}
+
+div.submit-container > button[type="submit"] {
+    margin: 10px 0;
+    border: none;
+    padding: 10px 60px;
+    font-size: 12pt;
+    background-color: deepskyblue;
+    color: white;
 }

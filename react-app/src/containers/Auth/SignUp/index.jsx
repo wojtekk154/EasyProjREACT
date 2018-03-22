@@ -6,38 +6,66 @@ import {SubmissionError} from 'redux-form';
 import {ActionCreators} from '../../../actions';
 import SignUpForm from '../../../components/RegisterForm';
 import AuthService from '../../../Services/AuthService';
+import {validators} from "../../../utils/validators";
 
 import './index.css';
 
 class SignUp extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            data: {
-                email: '',
-                password: '',
-                username: '',
-                password_confirmation: ''
-            },
-            valid: {
-                email: false,
-                password: false,
-                username: false,
-                password_confirmation: false
-            }
-        };
-
 
         this.authenticationService = new AuthService();
         this.submitRegistration = this.submitRegistration.bind(this);
     }
 
-    submitRegistration(e) {
-        if (e.username.length === 0) {
-            throw new SubmissionError({
-                username: 'Fill field username',
-                _error: 'Register failed!'
-            })
+    submitRegistration() {
+        const {signup} = this.props;
+
+        for (var property in signup.fields) {
+            if (signup.fields.hasOwnProperty(property)) {
+                switch (property) {
+                    case 'username':
+                        if (signup.values.username.length === 0) {
+                            throw new SubmissionError({
+                                email: 'Field is required!',
+                                _error: 'Failed Registration!'
+                            });
+                        }
+                        break;
+                    case 'email':
+                        if (signup.values.email.length === 0) {
+                            throw new SubmissionError({
+                                email: 'Field is required!',
+                                _error: 'Failed Registration!'
+                            });
+                        } else {
+                            const messages = validators['email'](signup.values.email);
+                            if (messages.length > 0) {
+                                throw new SubmissionError({
+                                    email: 'Wrong email address!',
+                                    _error: 'Failed Registration!'
+                                });
+                            }
+                        }
+                        break;
+                    case 'password':
+                        if (signup.values.password.length === 0) {
+                            throw new SubmissionError({
+                                email: 'Field is required!',
+                                _error: 'Failed Registration!'
+                            });
+                        }
+                        break;
+                    case 'password_confirmation':
+                        if (signup.values['password_confirmation'].length === 0) {
+                            throw new SubmissionError({
+                                email: 'Field is required!',
+                                _error: 'Failed Registration!'
+                            });
+                        }
+                        break;
+                }
+            }
         }
 
         // if (false) {
@@ -67,7 +95,9 @@ class SignUp extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return {};
+    return {
+        signup: state.form.signup
+    };
 };
 
 const mapDispatchToProps = dispatch => {
