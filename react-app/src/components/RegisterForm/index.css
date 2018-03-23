@@ -13,6 +13,10 @@
 div.error {
     border-bottom: 2px solid red;
 }
+strong.error {
+    font-size: 10px;
+    color: red;
+}
 
 div.input-field > label {
     display: block;

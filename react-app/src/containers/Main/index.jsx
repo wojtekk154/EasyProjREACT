@@ -8,6 +8,7 @@ import NotFound from '../../components/NotFound';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import SignUp from '../Auth/SignUp';
+import SignIn from '../Auth/SignIn';
 import {ActionCreators} from "../../actions/index";
 
 import './style.css';
@@ -73,6 +74,7 @@ const Routes = () => (
         <Switch>
             <Route exact path="/" component={Home}/>
             <Route path="/signup" component={SignUp} />
+            <Route path="/signin" component={SignIn} />
 
             {/* ============================= unknown url ================================ */}
             <Route component={NotFound}/>

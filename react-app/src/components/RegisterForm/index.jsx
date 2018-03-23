@@ -1,47 +1,70 @@
 import React from 'react'
-import {Control, Field, reduxForm} from 'redux-form';
-
+import {Field, Fields, reduxForm} from 'redux-form';
 
 import './index.css';
 
+const InputField = (field) => (
+    <div>
+        <div className={'input-field' + (!!field.meta.error ? ' error': '')}>
+            <label>{field.label}</label>
+            <input {...field.input} placeholder={field.label} type={field.type}/>
+        </div>
+        {field.meta.touched && field.meta.error && <strong className="error">{field.meta.error}</strong>}
+    </div>
+);
 
-function SignUpForm(props) {
-    const {error, handleSubmit, submitErrors, pristine, reset, submitting} = props;
-    console.log(props);
+const PasswordFields = (fields) => (
+    <div>
+        <div>
+            <div className={'input-field' + (!!fields.password.meta.error ? ' error': '')}>
+                <label>Password</label>
+                <input
+                    {...fields.password.input}
+                    type="password"
+                    placeholder="Password"
+                />
+            </div>
+            {fields.password.meta.touched && fields.password.meta.error &&
+            <strong className="error">{fields.password.meta.error}</strong>}
+        </div>
+        <div>
+            <div className={'input-field' + (!!fields.passwordConfirmation.meta.error ? ' error': '')}>
+                <label>Password Confirmation</label>
+                <input
+                    {...fields.passwordConfirmation.input}
+                    type="password"
+                    placeholder="Password Confirmation"
+                />
+            </div>
+            {fields.passwordConfirmation.meta.touched && fields.passwordConfirmation.meta.error &&
+            <strong className="error">{fields.passwordConfirmation.meta.error}</strong>}
+        </div>
+    </div>
+);
+
+const SignUpForm = (props) => {
+    const { error, handleSubmit, pristine, reset, submitting } = props;
     return (
         <form noValidate onSubmit={handleSubmit}>
-            <div
-                className={'input-field' + (!!submitErrors && submitErrors.hasOwnProperty('username') ? ' error' : '')}>
-                <label>Username</label>
-                <Field name="username" component="input" type="text" required="true"/>
-                <span> {(!!submitErrors && submitErrors.hasOwnProperty('username')) && submitErrors.username}</span>
-            </div>
-            <div
-                className={'input-field' + (!!submitErrors && submitErrors.hasOwnProperty('username') ? ' error' : '')}>
-                <label htmlFor="email">Email</label>
-                <Field name="email" component="input" type="email" required/>
-                <span> {(!!submitErrors && submitErrors.hasOwnProperty('username')) && submitErrors.username}</span>
-            </div>
-            <div
-                className={'input-field' + (!!submitErrors && submitErrors.hasOwnProperty('password') ? ' error' : '')}>
-                <label htmlFor="password">Password</label>
-                <Field name="password" component="input" type="password" required/>
-                <span> {(!!submitErrors && submitErrors.hasOwnProperty('password')) && submitErrors.password}</span>
-            </div>
-            <div
-                className={'input-field' + (!!submitErrors && submitErrors.hasOwnProperty('password_confirmation') ? ' error' : '')}>
-                <label htmlFor="password_confirmation">Password Confirmation</label>
-                <Field name="password_confirmation" component="input" type="password" required/>
-                <span> {(!!submitErrors && submitErrors.hasOwnProperty('password_confirmation')) && submitErrors.password_confirmation}</span>
-            </div>
-            <div
-                className={'input-field' + (!!submitErrors && submitErrors.hasOwnProperty('image') ? ' error' : '')}>
-                <label htmlFor="image">Inage</label>
-                <Field name="image" component="input" type="file"/>
-                 {!!submitErrors && submitErrors.hasOwnProperty('image') && <span>submitErrors.image</span>}
-            </div>
+            <Field
+                name="username"
+                component={InputField}
+                label="User name"
+                type="text"
+            />
+            <Field
+                name="email"
+                component={InputField}
+                label="User e-mail address"
+                type="email"
+            />
+            <Fields
+                names={['password', 'passwordConfirmation']}
+                component={PasswordFields}
+                type="password"
+            />
             <div className="submit-container">
-                <button type="submit" disabled={submitting}>
+                <button type="submit">
                     Log In
                 </button>
             </div>
@@ -49,8 +72,6 @@ function SignUpForm(props) {
     );
 };
 
-SignUpForm = reduxForm({
+export default reduxForm({
     form: 'signup'
 })(SignUpForm);
-
-export default SignUpForm;
