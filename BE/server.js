@@ -8,10 +8,10 @@ const bodyParser = require('body-parser');
 const app = express();
 let port = process.env.PORT || 1337;
 
-mongose.connect(config.database, { useMongoClient: true });
+mongose.connect(config.database);
 app.set('superSecret', config.secret); // secret variable
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({limit: '50mb', extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));
 app.use(morgan('dev')); //logs in console
 
 app.use('/api/auth', require('./app/routes/auth.routes'));

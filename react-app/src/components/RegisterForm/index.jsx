@@ -42,6 +42,17 @@ const PasswordFields = (fields) => (
     </div>
 );
 
+const fileField = ({ input, type, meta: { touched, error, warning } }) => {
+    delete input.value;
+
+    return (
+        <div className={'input-field' + (!!error ? ' error': '')}>
+            <label>Avatar</label>
+            <input {...input} type={type} />
+        </div>
+    );
+};
+
 const SignUpForm = (props) => {
     const { error, handleSubmit, pristine, reset, submitting } = props;
     return (
@@ -62,6 +73,11 @@ const SignUpForm = (props) => {
                 names={['password', 'passwordConfirmation']}
                 component={PasswordFields}
                 type="password"
+            />
+            <Field
+                name="avatar"
+                type="file"
+                component={fileField}
             />
             <div className="submit-container">
                 <button type="submit">

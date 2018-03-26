@@ -2,7 +2,6 @@ import React from 'react';
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {SubmissionError} from 'redux-form';
-import {Redirect} from 'react-router-dom';
 
 import {ActionCreators} from '../../../actions';
 import SignUpForm from '../../../components/RegisterForm';
@@ -87,13 +86,19 @@ class SignUp extends React.Component {
         }
 
         if (!error) {
-            this.authenticationService.signUpNewUser({
+            const file = !!values.avatar[0] ? values.avatar[0] : null;
+            let data = {
                 email: values.email,
+                username: values.username,
                 password: values.password,
-                username: values.username
-            })
+                image: file
+            };
+
+
+            this.authenticationService.signUpNewUser(data)
                 .then(response => {
-                    window.location.href = '/signin';
+                    console.log(response)
+                    // window.location.href = '/signin';
                 })
                 .catch(e => {
                     console.log(e);

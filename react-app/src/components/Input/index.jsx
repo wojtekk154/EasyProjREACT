@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './index.css';
 
-export const Input = (input, label, type) =>  {
+export const Input = ({props}) =>  {
     return (
         <div>
             <div className="input-field">
@@ -12,6 +12,6 @@ export const Input = (input, label, type) =>  {
             </div>
         </div>
     );
-}
+};
 
 export default Input;
