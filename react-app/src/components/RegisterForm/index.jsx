@@ -57,6 +57,7 @@ const SignUpForm = (props) => {
     const { error, handleSubmit, pristine, reset, submitting } = props;
     return (
         <form noValidate onSubmit={handleSubmit}>
+            <h2>Register:</h2>
             <Field
                 name="username"
                 component={InputField}
@@ -74,11 +75,11 @@ const SignUpForm = (props) => {
                 component={PasswordFields}
                 type="password"
             />
-            <Field
-                name="avatar"
-                type="file"
-                component={fileField}
-            />
+            {/*<Field*/}
+                {/*name="avatar"*/}
+                {/*type="file"*/}
+                {/*component={fileField}*/}
+            {/*/>*/}
             <div className="submit-container">
                 <button type="submit">
                     Log In

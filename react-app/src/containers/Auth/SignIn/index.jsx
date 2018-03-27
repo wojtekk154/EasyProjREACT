@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";
 
 import {ActionCreators} from '../../../actions';
-
+import SignInForm from '../../../components/SignInForm';
 import './index.css';
 
 class SignIn extends React.Component {
@@ -11,7 +11,7 @@ class SignIn extends React.Component {
     render() {
         return (
             <div className="registration-form">
-
+                <SignInForm />
             </div>
         );
     }

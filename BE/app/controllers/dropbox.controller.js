@@ -1,3 +1,4 @@
+require('isomorphic-fetch');
 const Dropbox = require('dropbox').Dropbox;
 const fs = require('fs');
 const path = require('path');
@@ -5,17 +6,12 @@ const path = require('path');
 
 exports.uploadToDropbox = (req, res) => {
     fs.readFile(req.file.path, (err, contents) => {
-        console.log(err, contents);
-        // if (err) {
-        //     console.log('Error: ', err);
-        // }
-        //
-        dbx.filesUpload({ path: '/temp/', contents: contents })
+        dbx.filesUpload({ path: '/EasyPro/' + req.file.filename + req.file.originalname, contents: contents })
             .then(function (response) {
                 console.log(response);
             })
             .catch(function (err) {
-                console.log(err);
+                // console.log(err);
             });
     });
 

@@ -1,0 +1,21 @@
+.checkbox {
+    margin: 10px 5px;
+}
+
+.checkbox > input[type="checkbox"] {
+
+}
+
+.checkbox > label {
+    color: gray;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+button[type="submit"] {
+    border: none;
+    background-color: deepskyblue;
+    padding: 10px 50px;
+    margin: 5px;
+    color: #fff;
+}

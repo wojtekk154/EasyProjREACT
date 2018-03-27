@@ -97,8 +97,7 @@ class SignUp extends React.Component {
 
             this.authenticationService.signUpNewUser(data)
                 .then(response => {
-                    console.log(response)
-                    // window.location.href = '/signin';
+                    window.location.href = '/signin';
                 })
                 .catch(e => {
                     console.log(e);

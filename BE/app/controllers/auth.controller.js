@@ -43,7 +43,7 @@ exports.register = (req, res) => {
     let auth = new User({
         email: req.body.email,
         username: req.body.username,
-        image: req.body.image ? req.body.image : null,
+        // image: req.body.image ? req.body.image : null,
         password: bcrypt.hashSync(req.body.password, salt),
         salt: salt,
         changePassword: true

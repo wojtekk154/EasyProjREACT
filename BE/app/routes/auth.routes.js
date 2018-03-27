@@ -4,7 +4,7 @@ const authController = require('../controllers/auth.controller');
 const dropboxController = require('../controllers/dropbox.controller');
 const app = express();
 let router = express.Router();
-var upload = multer({ dest: '/tmp/'});
+var upload = multer({ dest: './tmp/'});
 router.post('/sign_in', authController.loginAuth);
 router.post('/sign_up', authController.register);
 router.post('/upload', upload.single('image'), dropboxController.uploadToDropbox);

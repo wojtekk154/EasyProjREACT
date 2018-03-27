@@ -11,7 +11,7 @@ class App extends React.Component {
         return (
             <Provider store={store}>
                 <BrowserRouter>
-                    <AppMain/>
+                        <AppMain/>
                 </BrowserRouter>
             </Provider>
         );

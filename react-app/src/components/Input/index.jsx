@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 
 import './index.css';
 
-export const Input = ({props}) =>  {
+const Input = (props) =>  {
     return (
         <div>
             <div className="input-field">
-                <label>{label}</label>
-                <input {...input} {...others} placeholder={label} type={type}/>
+                <label>{props.label}</label>
+                <input name={props.name} value={props.value} onChange={props.onInputChange}  placeholder={props.label} type={props.type}/>
+                {props.error && (<span>{props.error}</span>)}
             </div>
         </div>
     );
