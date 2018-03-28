@@ -2,9 +2,10 @@ import React from 'react';
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 
-import './index.css';
 import Input from "../Input/index";
 import {ActionCreators} from "../../actions";
+
+import './index.css';
 
 class SignInForm extends React.Component {
     constructor(props) {
@@ -17,7 +18,12 @@ class SignInForm extends React.Component {
         };
 
         this.inputChange = this.inputChange.bind(this);
-        this.signInUser = this.signInUser.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit(e){
+        e.preventDefault();
+        this.props.loginUserAction({email: this.state.email, password: this.state.password});
     }
 
     inputChange(e) {
@@ -26,15 +32,11 @@ class SignInForm extends React.Component {
         });
     };
 
-    signInUser(e) {
-        e.preventDefault();
-        this.props.loginUserAction({email: this.state.email, password: this.state.password});
-    }
 
     render() {
         return (
             <div>
-                <form noValidate onSubmit={this.signInUser}>
+                <form noValidate onSubmit={this.handleSubmit}>
                     <h2>Sign in user:</h2>
                     <Input
                         onInputChange={this.inputChange}
@@ -69,8 +71,8 @@ class SignInForm extends React.Component {
     }
 }
 
-export default connect(state => {
-    return {}
+export default connect(() => {
+    return {};
 }, dispatch => {
     return bindActionCreators(ActionCreators, dispatch)
 })(SignInForm);

@@ -5,9 +5,9 @@ const initialState = {
 };
 
 export function commonReducer(state = initialState, action) {
-    switch (action.payload) {
+    switch (action.type) {
         case types.LOADING_ACTION:
-            return {...state, loading: action.value};
+            return {...state, loading: action.payload};
         default:
             return state;
     }

@@ -7,19 +7,17 @@ import SignInForm from '../../../components/SignInForm';
 import './index.css';
 
 class SignIn extends React.Component {
-
     render() {
         return (
             <div className="registration-form">
-                <SignInForm />
+                <SignInForm/>
             </div>
         );
     }
 }
 
 const mapStateToProps = state => {
-    return {
-    };
+    return {};
 };
 
 const mapDispatchToProps = dispatch => {

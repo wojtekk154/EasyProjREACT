@@ -1,30 +1,35 @@
 import React from 'react';
-import './index.css';
+import PropTypes from 'prop-types';
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 
 import {ActionCreators} from "../../actions";
 
+import './index.css';
+
 class Home extends React.Component {
     render() {
         return (
-          <div>
-              DDDDDDDDDD
-          </div>
+            <div>
+                Dupa
+            </div>
         );
     }
 }
 
-const mapStateToProps = state => {
-    return {
-    };
+Home.propTypes = {
+    session: PropTypes.object
 };
 
-const mapDispatchToProps = dispatch => {
+function mapStateToProps(state) {
+    return {session: state.session};
+}
+
+function mapDispatchToProps(dispatch) {
     return bindActionCreators(
         ActionCreators,
         dispatch
     );
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

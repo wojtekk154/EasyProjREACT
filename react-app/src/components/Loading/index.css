@@ -1,0 +1,44 @@
+.container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100vh;
+    background: #dddddd;
+    width: 100vw;
+}
+
+.container > .loading-icon {
+    position: relative;
+    top: 45%;
+    left: 50%;
+}
+
+.container > .loading-icon > i {
+
+    font-size: 48px;
+    color: orangered;
+    -webkit-animation: loader 3s ease-in infinite;
+    animation: loader 3s ease-in infinite;
+}
+
+@-webkit-keyframes loader {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes loader {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}

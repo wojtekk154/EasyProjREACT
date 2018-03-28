@@ -12,10 +12,9 @@ export const loginUserAction = (credentials) => {
 
         authService.signInUser(credentials)
             .then(response => dispatch(loginUserSuccessAction(response)))
-            .catch(e => dispatch(loginUserFaliureAction(e)));
-
-        dispatch(loadingAction(false));
-    }
+            .catch(e => dispatch(loginUserFaliureAction(e)))
+            .finally(() => dispatch(loadingAction(false)));
+    };
 };
 
 
